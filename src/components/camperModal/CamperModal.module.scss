@@ -1,0 +1,226 @@
+/* src/components/camperModal/CamperModal.module.scss */
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 982px;
+  max-height: 90vh; /* Максимальна висота модального вікна */
+  border-radius: 20px;
+  padding: 40px;
+  background-color: white;
+  outline: none;
+  overflow: hidden; /* Забороняє прокручування модального вікна */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden; /* Забороняє прокручування */
+}
+
+.modal-content-inner {
+  position: relative;
+  width: 926px;
+  padding-right: 16px;
+  max-height: 80vh; /* Забезпечити, що є місце для прокрутки */
+  overflow-y: auto; 
+}
+
+
+.modal-window {
+  max-width: 902px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+/* Стилізація полоски прокрутки */
+.modal-content-inner::-webkit-scrollbar {
+  max-width: 8px; /* Ширина полоски прокрутки */
+  max-height: 264px;
+  background: transparent; /* Фон для області прокрутки */
+}
+
+.modal-content-inner::-webkit-scrollbar-thumb {
+  background-color: #D9D9D9; /* Колір полоски прокрутки */
+  border-radius: 7px; /* Скруглення кути полоски прокрутки */
+}
+
+.modal-content-inner::-webkit-scrollbar-thumb:hover {
+  background-color: #c0c0c0; /* Колір полоски прокрутки при наведенні */
+}
+
+.modal-content-inner::-webkit-scrollbar-button {
+  display: none; /* Приховати кнопки прокрутки (верхню та нижню стрілки) */
+}
+
+.modal-content-inner::-webkit-scrollbar-track {
+  margin-top: 150px; /* Відступи між треком і краями контейнера */
+}
+
+.header-wrapper {
+  max-width: 902px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 16px;
+}
+
+.name-wrapper {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.price-wrapper {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.wrapper-location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.info-location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.my-icon {
+  display: inline-block;
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+  max-height: 24px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  z-index: 1000; /* Забезпечує, що кнопка буде поверх контенту */
+}
+
+.close-button:hover {
+  color: #D84343;
+}
+
+.modal-images {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.image-wrapper {
+  width: 290px;
+  height: 310px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.modal-text {
+  color: #475467;
+  font-weight: 400;
+}
+
+.modal-element {
+  span {
+    font-size: 16px;
+  }
+}
+
+.info-services {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 16px;
+}
+.wrapper-services {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: #F2F4F7;
+  border-radius: 100px;
+}
+.my-icon {
+  display: inline-block;
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+  max-height: 24px;
+}
+
+.my-icon-unique {
+  fill: black;
+}
+
+
+.additionals {
+  border-bottom: 2px solid #D9D9D9;
+  margin-bottom: 24px;
+   ul {
+     width: 902px;
+     height: 48px;
+     display: flex;
+     flex-direction: row;
+     gap: 40px;
+     font-size: 24px;
+     font-weight: 600;
+   }
+}
+.nav-link {
+  cursor: pointer;
+  text-decoration: none; /* Прибирає підкреслювання */
+  background-color:#FFF;
+  border: none;
+}
+
+.active {
+  border-bottom: 5px solid #E44848;
+  padding-bottom: 15px;
+  margin-bottom: -5px; /* Moves the border down without increasing the overall element height */
+}
+.modal-body {
+  width: 902px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.tab-content-wrapper {
+  width: 430px;
+  display: flex;
+}

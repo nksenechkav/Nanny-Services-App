@@ -1,0 +1,41 @@
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.imageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Встановлює ширину контейнера відповідно до ширини картинки */
+}
+
+.image {
+  width: 100%; /* Адаптивний розмір для зображення */
+  height: auto; /* Збереження пропорцій */
+}
+
+.titleLink {
+  text-decoration: none; /* Прибрати підкреслення */
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    color: #E44848; /* Темно-зелений колір, що нагадує природу */
+    text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #555; /* Темно-сірий колір */
+  text-align: center;
+  margin-top: 10px; /* Відступ зверху */
+}

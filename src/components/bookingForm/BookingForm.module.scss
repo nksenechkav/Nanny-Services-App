@@ -1,0 +1,114 @@
+.booking-form-container {
+  width: 448px;
+  height: 532px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: 10px;
+  border: 2px solid #D9D9D9;
+
+  .booking-header {
+    font-size: 20px;
+    font-weight: 600;
+    color: #101828;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #475467;
+  }
+}
+
+.booking-form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  .form-group {
+    background-color: #F7F7F7;
+    border-radius: 10px;
+    width: 400px;
+    height: 56px;
+    
+    input,
+    textarea {
+      width: calc(100% - 30px); /* Зменшити ширину для уникнення прокрутки */
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      background-color: #F7F7F7;
+      box-sizing: border-box; /* Враховувати padding у width */
+      
+      placeholder {
+        font-weight: bold;
+      }
+    }
+
+    textarea {
+      width: 400px;
+      height: 114px;
+      resize: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border: none;
+      resize: none;
+    }
+
+    .error {
+      margin-top: 5px;
+      color: red;
+      font-size: 12px;
+    }
+
+    .date-picker-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .my-icon {
+        display: inline-block;
+        fill: none;
+        stroke: black;
+        stroke-width: 1px;
+        height: 24px;
+        width: 24px;
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+      }
+
+      .date-picker {
+        width: 100%;
+        padding-right: 40px; /* Додатковий простір для іконки */
+        box-sizing: border-box; /* Враховувати padding у width */
+      }
+    }
+  }
+
+  .submit-button {
+    margin-top: 58px;
+    display: block;
+    width: 160px;
+    height: 56px;
+    padding: 10px;
+    background-color: #E44848;
+    color: #fff;
+    border: none;
+    border-radius: 200px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #D84343;
+    }
+  }
+}

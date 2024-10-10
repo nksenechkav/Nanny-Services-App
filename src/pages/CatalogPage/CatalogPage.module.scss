@@ -1,0 +1,14 @@
+.catalog-page-container {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; /* Центрує кнопку по горизонталі */
+  align-items: flex-start; /* Центрує кнопку по вертикалі (якщо потрібно) */
+}
+
+.catalog-text {
+  font-size: 60px;
+  color: #E44848;
+}

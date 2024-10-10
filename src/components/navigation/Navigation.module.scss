@@ -1,0 +1,15 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+      .link {
+        text-decoration: none;
+        padding: 15px;
+        color: #2a363b;
+      }
+    
+      .link:hover, .link:focus {
+        color: red;
+      }

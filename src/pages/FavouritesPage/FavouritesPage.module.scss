@@ -1,0 +1,13 @@
+.favourites-page-container {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row; /* Центрує кнопку по горизонталі */
+  align-items: flex-start; /* Центрує кнопку по вертикалі (якщо потрібно) */
+}
+.favourites-text {
+  font-size: 60px;
+  color: #E44848;
+}

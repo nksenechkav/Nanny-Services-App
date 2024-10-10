@@ -1,0 +1,25 @@
+.btn-container {
+  display: flex;
+  justify-content: center; /* Центрує кнопку по горизонталі */
+  align-items: center; /* Центрує кнопку по вертикалі (якщо потрібно) */
+  margin-top: 30px;
+}
+
+.btn {
+  width: 145px;
+  height: 56px;
+  cursor: pointer;
+  border-radius: 200px;
+  border: 1px solid #475467;
+  font: inherit;
+  color: #101828;
+  background-color: #F7F7F7;
+  padding: 10px 15px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+  border: 1px solid #E44848;
+  color: #101828;
+}

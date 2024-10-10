@@ -1,0 +1,129 @@
+
+.item {
+  max-width: 888px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.image-wrapper {
+  width: 290px;
+  height: 310px;
+  overflow: hidden;
+  border-radius: 10px; 
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-wrapper {
+  width: 526px;
+  height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.my-icon {
+  display: inline-block;
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+  max-height: 24px;
+}
+
+.my-icon-unique {
+  fill: black;
+}
+
+
+.info-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 22px;
+  font-weight: 600;
+}
+.wrapper-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.wrapper-location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.info-location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+}
+.info-description {
+  display: -webkit-box;           /* Для підтримки flexbox-стилів у Webkit */
+  -webkit-line-clamp: 1;          /* Кількість рядків, які будуть показані */
+  -webkit-box-orient: vertical;   /* Вертикальна орієнтація box */
+  overflow: hidden;               /* Приховати текст, що виходить за межі блоку */
+  text-overflow: ellipsis;        /* Додати "..." в кінці тексту */
+  white-space: normal;            /* Дозволити перенос рядків */
+  height: 24px;   
+}
+.info-services {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 16px;
+}
+.wrapper-services {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: #F2F4F7;
+  border-radius: 100px;
+}
+.btn {
+  display: block;
+  max-width: 166px;
+  height: 56px;
+  background-color: #D84343;
+  color: #F2F4F7;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 200px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #E44848;
+  color: #F7F7F7;
+}
+
+.favourites-btn {
+  display: block;
+  border: none;
+  background-color: #FFF;
+  cursor: pointer;
+}
