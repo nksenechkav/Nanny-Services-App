@@ -7,7 +7,7 @@ import css from './HomePage.module.scss';
 export default function HomePage() {
   return (
     <>
-      <DocumentTitle>Camper Rental</DocumentTitle>
+      <DocumentTitle>Nanny Services</DocumentTitle>
 
       <div className={css.container}>
       <p className={css.subtitle}>
