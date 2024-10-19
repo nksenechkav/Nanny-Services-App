@@ -11,7 +11,7 @@ export const Navigation = () => {
         Home
       </NavLink>
       <NavLink className={css.link} to="/catalog">
-        Catalog
+        Nannies
       </NavLink>
       <NavLink className={css.link} to="/favorites">
         Favorites

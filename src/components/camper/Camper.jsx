@@ -52,7 +52,7 @@ const Camper = ( {camper: {_id, name, price, rating, location, adults, engine, t
               <svg className={`${css["my-icon"]} ${isFavourite ? css["my-icon-active"] : ""}`} width="24" height="24">
                 <use href={isFavourite ? "/icons.svg#icon-heart-red" : "/icons.svg#icon-heart-black"}></use>
               </svg>
-            </button>
+      </button>
       </div>
       </div>
       <div className={css["info-location"]}>

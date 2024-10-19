@@ -1,22 +1,26 @@
 .container {
+  max-width: 1376px;
+  border: none;
+  border-radius: 30px;
+  max-height: 736px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+}
+
+.title-container {
+  width: 688px;
+  height: 736px;
+  border-radius: 30px 0 0 30px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px;
-}
-
-.imageContainer {
-  position: relative;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%; /* Встановлює ширину контейнера відповідно до ширини картинки */
-}
+  background-color: #0957C3 ;
 
-.image {
-  width: 100%; /* Адаптивний розмір для зображення */
-  height: auto; /* Збереження пропорцій */
 }
 
 .titleLink {
@@ -24,18 +28,47 @@
 }
 
 .title {
-    position: absolute;
-    top: 50%;
-    left: 54%;
-    transform: translate(-50%, -50%);
-    font-size: 100px;
-    color: #E44848; /* Темно-зелений колір, що нагадує природу */
-    text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+  width: 517px;
+  font-size: 65px;
+  color: white;
+  margin-bottom: 28px;
 }
 
 .subtitle {
-  font-size: 24px;
-  color: #555; /* Темно-сірий колір */
-  text-align: center;
-  margin-top: 10px; /* Відступ зверху */
+  width: 517px;
+  font-size: 28px;
+  color: white;
+  margin-bottom: 64px; /* Відступ зверху */
+}
+
+.btn {
+  display: block;
+  max-width: 230px;
+  height: 60px;
+  background-color: transparent;
+  border: solid 1px #FBFBFB;
+  padding: 18px 50px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+
+.text{
+  color: #F2F4F7;
+  font-size: 18px;
+}
+
+.image-container {
+  width: 688px;
+  height: 736px;
+}
+
+.image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%; /* Адаптивний розмір для зображення */
+  height: 100%; /* Збереження пропорцій */
 }
