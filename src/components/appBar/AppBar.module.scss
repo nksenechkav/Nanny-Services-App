@@ -1,17 +1,17 @@
 
   .header {
     position: absolute;
-    top: 50px;
-    left: 50px;
-    max-width: 1376px;
+    top: 40px;
+    left: 74px;
+    width: 1376px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
     margin: 0 auto;
+    padding: 0 100px;
     border-bottom: 1px solid rgba(251, 251, 251, 0.4);
-    border-bottom: 1px solid rgba(251, 251, 251, 0.4);
-
+    padding-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
   }

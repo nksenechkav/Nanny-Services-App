@@ -32,6 +32,7 @@ const App = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
         <Route
           path="/register"
           element={
@@ -42,12 +43,6 @@ const App = () => {
           path="/login"
           element={
             <RestrictedRoute redirectTo="/catalog" component={<LoginPage />} />
-          }
-        />
-         <Route
-          path="/catalog"
-          element={
-            <PrivateRoute redirectTo="/login" component={<CatalogPage />} />
           }
         />
         <Route

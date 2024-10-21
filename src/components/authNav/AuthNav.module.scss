@@ -16,7 +16,12 @@
     background-color: transparent;
     border: solid 1px #FBFBFB;
     border-radius: 30px;
+    transition: background-color 0.3s ease, border 0.3s ease;
   }
+  .auth-btn:hover, .auth-btn:focus, .auth-btn:active {
+    background-color: #0957C3;  /* Цвет при нажатии */
+    border: none;  /* Убираем бордер */
+}
 
 .auth-link {
     font-size: 16px;

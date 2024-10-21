@@ -13,19 +13,19 @@ export const Navigation = () => {
       <NavLink className={css["link-header"]}to="/">
         Nanny.Services
       </NavLink>
-      <NavLink className={css.link} to="/">
+      <div className={css["link-menu"]}>
+        <NavLink className={css.link} to="/">
         Home
       </NavLink>
-      {isLoggedIn && (
         <NavLink className={css.link} to="/catalog">
         Nannies
       </NavLink>
-      )}
       {isLoggedIn && (
          <NavLink className={css.link} to="/favorites">
          Favorites
        </NavLink>
       )}
+      </div>
     </nav>
   );
 };
