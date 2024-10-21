@@ -1,0 +1,30 @@
+.auth-navigation {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #FBFBFB;
+    gap: 8px
+  }
+  .auth-btn {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 14px 40px;
+    color: #FBFBFB;
+    background-color: transparent;
+    border: solid 1px #FBFBFB;
+    border-radius: 30px;
+  }
+
+.auth-link {
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #FBFBFB;
+  }
+
+  .auth-link:hover, .auth-link:focus {
+    color:  rgba(251, 251, 251, 0.4);
+  }

@@ -1,8 +1,17 @@
 
   .header {
-    max-width: 1440px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    max-width: 1376px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     margin: 0 auto;
-    border-bottom: 10px solid  #3a5f40;
+    border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+    border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+
     font-size: 24px;
     font-weight: bold;
   }

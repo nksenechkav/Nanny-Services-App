@@ -29,13 +29,15 @@
 
 .title {
   width: 517px;
-  font-size: 65px;
+  font-size: 69px;
+  font-weight: 500;
   color: white;
   margin-bottom: 28px;
 }
 
 .subtitle {
   width: 517px;
+  font-weight: 400;
   font-size: 28px;
   color: white;
   margin-bottom: 64px; /* Відступ зверху */
@@ -58,6 +60,7 @@
 .text{
   color: #F2F4F7;
   font-size: 18px;
+  font-weight: 500;
 }
 
 .image-container {
