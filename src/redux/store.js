@@ -22,15 +22,16 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, campersReducer);
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['token'],
-};
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage,
+//   whitelist: ['token'],
+// };
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    // auth: persistReducer(authPersistConfig, authReducer),
+    auth: authReducer,
     campers: persistedReducer,
     filters: filtersReducer,
   },

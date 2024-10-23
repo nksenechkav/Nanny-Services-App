@@ -17,10 +17,9 @@ const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
 const FavouritesPage = lazy(() => import('../../pages/FavouritesPage/FavouritesPage'));
 const NotFoundPage = lazy(() => import("../../pages/notFoundPage/NotFoundPage"));
 
-
 const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useSelector(selectIsRefreshing);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -51,10 +50,10 @@ const App = () => {
             <PrivateRoute redirectTo="/login" component={<FavouritesPage />} />
           }
         />
-        <Route path="*" element={<NotFoundPage/>}/>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
-);
+  );
 };
 
-export default App
+export default App;
