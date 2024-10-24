@@ -1,27 +1,69 @@
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 566px;
+  max-height: 490px;
+  border-radius: 30px;
+  padding: 40px;
+  background-color: white;
+  outline: none;
+  overflow: hidden; /* Забороняє прокручування модального вікна */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden; /* Забороняє прокручування */
+}
+
 .form {
-    margin-top: 100px;
-    padding-left: 270px;
-    width: 640px;
+    width: 438px;
     display: flex;
     flex-direction: column;
   }
-  
-  .form-wrapper {
-    margin-bottom: 15px;
+
+  .form-header {
+    font-size: 40px;
+    font-weight: 500;
+    color: rgba(0, 0, 0);
+    margin-bottom: 20px;
+   }
+
+  .form-text {
+   font-size: 15px;
+   font-weight: 400;
+   color: rgba(0, 0, 0, 0.5);
+   margin-bottom: 40px;
   }
   
-  .label {
-    margin-bottom: 5px;
-    display: block;
-    font-weight: bold;
-    margin-right: 10px;
+  .form-wrapper {
+    margin-bottom: 18px;
   }
   
   .field {
-    width: 600px;
-    padding: 8px;
+    width: 438px;
+    height: 52px;
+    padding: 16px 18px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 12px;
+    outline: none;
+  }
+  
+  ::placeholder {
+    color: #11101C;
+  }
+
+  .my-icon {
+    display: inline-block;
+    position: absolute;
+    bottom: 165px;
+    right: 50px;
   }
   
   .error {
@@ -30,17 +72,36 @@
   }
   
   .btn {
-    width: 600px;
-    height: 40px;
-    background-color: #28a745;
+    margin-top: 22px;
+    width: 438px;
+    height: 52px;
+    background-color: #0957C3;
     color: #fff;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 18px;
+    transition: background-color 0.3s ease, border 0.3s ease;
   }
   
-  .btn:hover {
-    background-color: #218838;
+  .btn:hover, .btn:focus {
+    border: solid 1px#0957C3; 
+    color: #0957C3; 
+    background-color: rgba(251, 251, 251, 0.4);
+  }
+
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    z-index: 1000; /* Забезпечує, що кнопка буде поверх контенту */
+  }
+  
+  .close-button:hover {
+    color: #0957C3;
   }

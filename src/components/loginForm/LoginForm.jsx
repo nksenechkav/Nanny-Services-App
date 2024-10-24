@@ -3,13 +3,14 @@
 import { Formik, Form, Field } from 'formik';
 import { ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
 import toast, { Toaster } from 'react-hot-toast';
 import css from './LoginForm.module.scss';
 import Modal from 'react-modal';
 import { AiOutlineClose } from 'react-icons/ai';
+import { RiEyeOffLine, RiEyeLine } from 'react-icons/ri';
 
 const FeedbackSchema = Yup.object().shape({
   email: Yup.string().trim()
@@ -20,10 +21,17 @@ const FeedbackSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const LoginForm = ({ content, isOpen, onRequestClose }) => {
+export const LoginForm = ({ isOpen, onRequestClose }) => {
   const dispatch = useDispatch();
   const emailFieldId = useId();
   const passwordFieldId = useId();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Функция для переключения видимости пароля
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (values, actions) => {
     dispatch(logIn({
@@ -50,14 +58,23 @@ export const LoginForm = ({ content, isOpen, onRequestClose }) => {
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form} autoComplete="off">
+      <p className={css['form-header']}>Log In</p>
+      <p className={css['form-text']}>Welcome back! Please enter your credentials to access your account and continue your babysitter search.</p>
         <div className={css['form-wrapper']}>
-          <label className={css.label} htmlFor={emailFieldId}>Email</label>
-          <Field className={css.field} type="email" name="email" id={emailFieldId} placeholder="Enter your email..." />
+          {/* <label className={css.label} htmlFor={emailFieldId}>Email</label> */}
+          <Field className={css.field} type="email" name="email" id={emailFieldId} placeholder="Email" />
           <ErrorMessage name="email" component="p" className={css.error} />
         </div>
         <div className={css['form-wrapper']}>
-          <label className={css.label} htmlFor={passwordFieldId}>Password</label>
-          <Field className={css.field} type="password" name="password" id={passwordFieldId} placeholder="Enter your password..." />
+          {/* <label className={css.label} htmlFor={passwordFieldId}>Password</label> */}
+          <Field className={css.field}  type={showPassword ? 'text' : 'password'} name="password" id={passwordFieldId} placeholder="Password"/> 
+          <button
+        type="button"
+        onClick={togglePasswordVisibility}
+        style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+      >
+        {showPassword ? <RiEyeLine className={css['my-icon']} size={20} /> : <RiEyeOffLine className={css['my-icon']} size={20} />}
+      </button>
           <ErrorMessage name="password" component="p" className={css.error} />
         </div>
         <button className={css.btn} type="submit">Log In</button>

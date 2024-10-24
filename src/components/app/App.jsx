@@ -9,10 +9,10 @@ import css from './App.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from '../../redux/auth/selectors.js';
 import { refreshUser } from '../../redux/auth/operations.js';
+import { RegistrationForm } from '../registrationForm/RegistrationForm.jsx';
+import { LoginForm } from '../loginForm/LoginForm.jsx';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const RegistrationPage = lazy(() => import('../../pages/RegistrationPage/RegistrationPage'));
-const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
 const FavouritesPage = lazy(() => import('../../pages/FavouritesPage/FavouritesPage'));
 const NotFoundPage = lazy(() => import("../../pages/notFoundPage/NotFoundPage"));
@@ -35,13 +35,13 @@ const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/catalog" component={<RegistrationPage />} />
+            <RestrictedRoute redirectTo="/catalog" component={<RegistrationForm />} />
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/catalog" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/catalog" component={<LoginForm />} />
           }
         />
         <Route

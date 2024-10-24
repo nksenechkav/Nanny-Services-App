@@ -3,11 +3,14 @@
 import { Formik, Form, Field } from 'formik';
 import { ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import toast, { Toaster } from 'react-hot-toast';
+import Modal from 'react-modal';
 import css from './RegistrationForm.module.scss';
+import { AiOutlineClose } from 'react-icons/ai';
+import { RiEyeOffLine, RiEyeLine } from 'react-icons/ri';
 
 const FeedbackSchema = Yup.object().shape({
   email: Yup.string().trim()
@@ -18,11 +21,18 @@ const FeedbackSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const RegistrationForm = () => {
+export const RegistrationForm = ({ isOpen, onRequestClose }) => {
   const dispatch = useDispatch();
   const nameFieldId = useId();
   const emailFieldId = useId();
   const passwordFieldId = useId();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Функция для переключения видимости пароля
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (values, actions) => {
     dispatch(register({
@@ -37,30 +47,50 @@ export const RegistrationForm = () => {
   };
 
   return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      shouldCloseOnOverlayClick={true}
+      className={css['modal-content']}
+      overlayClassName={css['modal-overlay']}
+    >
     <Formik
       initialValues={{ name: '', email: '', password: '' }}
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form} autoComplete="off">
+      <p className={css['form-header']}>Registration</p>
+      <p className={css['form-text']}>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</p>
         <div className={css['form-wrapper']}>
-          <label className={css.label} htmlFor={nameFieldId}>Username</label>
-          <Field className={css.field} type="text" name="name" id={nameFieldId} placeholder="Enter your name..." />
+          {/* <label className={css.label} htmlFor={nameFieldId}>Username</label> */}
+          <Field className={css.field} type="text" name="name" id={nameFieldId} placeholder="Name" />
           <ErrorMessage name="name" component="p" className={css.error} />
         </div>
         <div className={css['form-wrapper']}>
-          <label className={css.label} htmlFor={emailFieldId}>Email</label>
-          <Field className={css.field} type="email" name="email" id={emailFieldId} placeholder="Enter your email..." />
+          {/* <label className={css.label} htmlFor={emailFieldId}>Email</label> */}
+          <Field className={css.field} type="email" name="email" id={emailFieldId} placeholder="Email" />
           <ErrorMessage name="email" component="p" className={css.error} />
         </div>
         <div className={css['form-wrapper']}>
-          <label className={css.label} htmlFor={passwordFieldId}>Password</label>
-          <Field className={css.field} type="password" name="password" id={passwordFieldId} placeholder="Enter your password..." />
+          {/* <label className={css.label} htmlFor={passwordFieldId}>Password</label> */}
+          <Field className={css.field}  type={showPassword ? 'text' : 'password'} name="password" id={passwordFieldId} placeholder="Password"/> 
+          <button
+        type="button"
+        onClick={togglePasswordVisibility}
+        style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+      >
+        {showPassword ? <RiEyeLine className={css['my-icon']} size={20} /> : <RiEyeOffLine className={css['my-icon']} size={20} />}
+      </button>
           <ErrorMessage name="password" component="p" className={css.error} />
         </div>
-        <button className={css.btn} type="submit">Register</button>
+        <button className={css.btn} type="submit">Sign In</button>
         <Toaster />
       </Form>
     </Formik>
+    <button className={css['close-button']} onClick={onRequestClose}>
+    <AiOutlineClose size={24} />
+    </button>
+    </Modal>
   );
 };
