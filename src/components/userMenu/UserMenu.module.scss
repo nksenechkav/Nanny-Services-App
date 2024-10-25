@@ -1,26 +1,47 @@
 .wrapper {
+    // width: 94px;
+    // height: 40px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
+  }
+  .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #FBFBFB;
+  }
+
+  .icon {
+    display: inline-block;
+    fill: #0957C3;
   }
   
   .username {
-    font-weight: 700;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   .btn {
-    width: 100px;
-    height: 40px;
+    width: 134px;
+    height: 48px;
     display: block;
-    background-color: #dc3545;
+    background-color: transparent;
     color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    padding: 14px 40px;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, border 0.3s ease;
   }
   
-  .btn:hover {
-    background-color: #c82333;
+  .btn:hover, .btn:focus {
+    background-color: rgba(251, 251, 251, 0.4);
+    border: none;
   }

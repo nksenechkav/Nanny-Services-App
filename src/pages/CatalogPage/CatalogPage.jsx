@@ -25,14 +25,18 @@ export default function CatalogPage() {
   return (
     <div className={css["catalog-page-container"]}>
       <DocumentTitle>Catalog</DocumentTitle>
+      <div className={css["catalog-page-header"]}>
+      </div>
+      <div className={css["catalog-page-main"]}>
       <SearchBox/>
       {isLoading && <LoaderComponent />}
       {error && <ErrorMessage />}  
       {filteredCampers.length > 0 ? (
         <CamperList campers={filteredCampers} />
       ) : (
-        <p className={css["catalog-text"]}>No searched campers.</p>
+        <p className={css["catalog-text"]}>No searched nannies.</p>
       )}
+      </div>  
     </div>
   );
 }
