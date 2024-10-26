@@ -5,12 +5,12 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/Layout.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import { RestrictedRoute } from '../RestrictedRoute.jsx';
-import css from './App.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from '../../redux/auth/selectors.js';
 import { refreshUser } from '../../redux/auth/operations.js';
 import { RegistrationForm } from '../registrationForm/RegistrationForm.jsx';
 import { LoginForm } from '../loginForm/LoginForm.jsx';
+import LoaderComponent from '../loader/Loader.jsx';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
@@ -26,7 +26,7 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p className={css.starting}>Refreshing user...</p>
+    <LoaderComponent/>
   ) : (
     <Layout>
       <Routes>

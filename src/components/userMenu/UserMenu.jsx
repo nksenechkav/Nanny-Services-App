@@ -9,7 +9,6 @@ import css from './UserMenu.module.scss';
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
- console.log(user);
 
   return (
     <div className={css.wrapper}>
