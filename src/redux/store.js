@@ -1,7 +1,7 @@
 // src/redux/store.js
 
 import { configureStore } from "@reduxjs/toolkit";
-import { campersReducer } from "./campers/slice";
+import { babysittersReducer } from "./babysitters/slice";
 import { filtersReducer } from "./filters/slice";
 import {
   persistStore,
@@ -21,7 +21,7 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, campersReducer);
+const persistedReducer = persistReducer(persistConfig, babysittersReducer);
 // const authPersistConfig = {
 //   key: 'auth',
 //   storage,
@@ -32,7 +32,7 @@ export const store = configureStore({
   reducer: {
     // auth: persistReducer(authPersistConfig, authReducer),
     auth: authReducer,
-    campers: persistedReducer,
+    babysitters: persistedReducer,
     filters: filtersReducer,
   },
   middleware: (getDefaultMiddleware) =>
