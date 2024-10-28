@@ -1,7 +1,8 @@
 // src/pages/CatalogPage/CatalogPage.jsx
 
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import DocumentTitle from '../../components/DocumentTitle.jsx';
 // import { selectIsLoading, selectError } from '../../redux/babysitters/selectors.js';
 // import LoaderComponent from '../../components/loader/Loader.jsx';
@@ -10,11 +11,11 @@ import DocumentTitle from '../../components/DocumentTitle.jsx';
 // import CamperList from '../../components/camperList/CamperList.jsx';
 import css from './CatalogPage.module.scss';
 // import { selectFilteredCampers } from '../../redux/filters/selectors.js';
-import { fetchBabysitters } from '../../redux/babysitters/operations.js';
+  //  import { fetchBabysitters } from '../../redux/babysitters/operations.js';
 import { selectBabysitters } from '../../redux/babysitters/selectors.js';
 
 export default function CatalogPage() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const isLoading = useSelector(selectIsLoading);
   // const error = useSelector(selectError);
   // const filteredCampers = useSelector(selectFilteredCampers); 

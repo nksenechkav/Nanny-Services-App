@@ -10,6 +10,8 @@ export const fetchBabysitters = createAsyncThunk(
     try {
       const babysittersRef = ref(db, 'babysitters');
       const snapshot = await get(babysittersRef);
+      console.log(snapshot);
+      console.log(babysittersRef);
       if (snapshot.exists()) {
         return snapshot.val();
       } else {
