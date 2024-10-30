@@ -10,6 +10,7 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyAl2ySOJKPpuk0zjCnWvKAOJo1j1cNh9q0",
   authDomain: "nanny-services-app.firebaseapp.com",
+  databaseURL: "https://nanny-services-app-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "nanny-services-app",
   storageBucket: "nanny-services-app.appspot.com",
   messagingSenderId: "931936030474",
@@ -21,3 +22,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getDatabase(app);
+console.log(db);

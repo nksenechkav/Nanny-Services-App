@@ -8,10 +8,8 @@ export const fetchBabysitters = createAsyncThunk(
   'babysitters/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const babysittersRef = ref(db, 'babysitters');
+      const babysittersRef = ref(db, '/');
       const snapshot = await get(babysittersRef);
-      console.log(snapshot);
-      console.log(babysittersRef);
       if (snapshot.exists()) {
         return snapshot.val();
       } else {

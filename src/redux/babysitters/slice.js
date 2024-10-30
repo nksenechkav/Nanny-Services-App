@@ -44,6 +44,7 @@ const babysittersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
+        console.log(state.items);
       })
       .addCase(fetchBabysitters.rejected, handleRejected)
   }
