@@ -8,7 +8,7 @@ const selectFavouriteIds = (state) => state.babysitters.favourites;
 export const selectFavouritesBabysitters = createSelector(
   [selectBabysitters, selectFavouriteIds],
   (babysitters, favourites) => {
-    return babysitters.filter(babysitters => favourites.includes(babysitters._id));
+    return babysitters.filter(babysitters => favourites.includes(babysitters.index));
   }
 );
 

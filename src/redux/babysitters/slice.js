@@ -26,14 +26,14 @@ const babysittersSlice = createSlice({
 
   reducers: {
     addBabysitterToFavourites: (state, action) => {
-      const babysitterId = action.payload;
-      if (!state.favourites.includes(babysitterId)) {
-        state.favourites.push(babysitterId);
+      const babysitterIdx = action.payload;
+      if (!state.favourites.includes(babysitterIdx)) {
+        state.favourites.push(babysitterIdx);
       }
     },
     deleteBabysitterFromFavourites: (state, action) => {
-      const babysitterId = action.payload;
-      state.favourites = state.favourites.filter(id => id !== babysitterId);
+      const babysitterIdx = action.payload;
+      state.favourites = state.favourites.filter(index => index !== babysitterIdx);
     },
   },
 
@@ -44,7 +44,6 @@ const babysittersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
-        console.log(state.items);
       })
       .addCase(fetchBabysitters.rejected, handleRejected)
   }

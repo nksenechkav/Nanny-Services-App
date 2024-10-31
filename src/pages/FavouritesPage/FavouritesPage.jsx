@@ -6,7 +6,7 @@ import DocumentTitle from '../../components/DocumentTitle.jsx';
 import { selectIsLoading, selectError, selectFavouritesCampers } from '../../redux/campers/selectors.js';
 import LoaderComponent from '../../components/loader/Loader.jsx';
 import ErrorMessage from '../../components/error/ErrorMessage.jsx';
-import CamperList from '../../components/camperList/CamperList.jsx';
+import CamperList from '../../components/babysitterList/BabysitterList.jsx';
 import css from './FavouritesPage.module.scss';
 
 export default function FavouritesPage() {
