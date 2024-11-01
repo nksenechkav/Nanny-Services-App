@@ -2,8 +2,10 @@
 
 import css from "./Babysitter.module.scss";
 import { BsStarFill } from "react-icons/bs";
-// import CamperModal from '../camperModal/CamperModal.jsx';
-// import { useState } from "react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { BiMap } from "react-icons/bi";
+import CamperModal from '../camperModal/CamperModal.jsx';
+import { useState } from "react";
 import { addBabysitterToFavourites, deleteBabysitterFromFavourites } from "../../redux/babysitters/slice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavouritesBabysitters } from "../../redux/babysitters/selectors.js";
@@ -23,84 +25,103 @@ const Babysitter = ( {babysitter: {index, name, price_per_hour, rating, location
     }
   };
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [modalContent, setModalContent] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({});
 
-  // function handleClick() {
-  //   const content = {
-  //     index, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age, about, reviews, characters, education
-  //   };
+  function handleClick() {
+    const content = {
+      index, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age, about, reviews, characters, education
+    };
 
-  // //   setModalContent(content);
-  // //   setIsModalOpen(true);
+    setModalContent(content);
+    setIsModalOpen(true);
 
-  // }
+  }
   
+  const calculateAge = (birthDateString) => {
+    const birthDate = new Date(birthDateString);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
+  };
+
+  const age = calculateAge(birthday);
 
   return (
     <div className={css.item}>
       <div className={css["image-wrapper"]}> 
       <img className={css["image"]} src={avatar_url} alt={name} />
+      <span className={css["circle"]}></span>
       </div>
-      <div className={css["info-wrapper"]}> 
+      <div className={css["main-wrapper"]}>
+
+      <div className={css["header-wrapper"]}> 
+
+      <div className={css["info-name-wrapper"]}>
+      <p className={css["info-span"]}>Nanny</p>
+      <p className={css["info-name"]}>{name}</p>
+      </div>
+      
       <div className={css["info-header"]}>
-      <p className={css.info}>{name}</p>
-      <div className={css["wrapper-header"]}>
-      <p className={css.info}>price/1 hour {price_per_hour}&#36;</p>
+      <div className={css["wrapper-info-header"]}>
+      <BiMap size={16} color="black" />
+      <p className={css.info}>{location}</p>
+      </div>
+      <div className={css["wrapper-info-header"]}>
+      <BsStarFill size={16} color="gold" />
+      <p className={css.info}>Rating: {rating}</p>
+      {/* <p className={css["info-reviews"]}>({reviews.length} Reviews)</p> */}
+      </div>
+      <div className={css["wrapper-info-header"]}>
+      <p className={css.info}>Price/1 hour: <span>{price_per_hour}&#36;</span></p>
+      </div>
       <button
               className={`${css["favourites-btn"]} ${isFavourite ? css["favourites-btn-active"] : ""}`}
               onClick={handleFavouriteClick}
             >
-              <svg className={`${css["my-icon"]} ${isFavourite ? css["my-icon-active"] : ""}`} width="24" height="24">
-                <use href={isFavourite ? "/icons.svg#icon-heart-red" : "/icons.svg#icon-heart-black"}></use>
-              </svg>
+              {isFavourite ? (
+                <AiFillHeart size={24} color="#0957C3" /> // заполненное синее сердечко
+              ) : (
+                <AiOutlineHeart size={24} color="black" /> // пустое сердечко с черной обводкой
+              )}
       </button>
       </div>
+    
       </div>
-      <div className={css["info-location"]}>
-      <div className={css["wrapper-location"]}>
-      <BsStarFill size={16} color="gold" />
-      <p className={css.info}>{rating}</p>
-      <p className={css["info-reviews"]}>({reviews.length} Reviews)</p>
+
+      <div className={css["info-services"]}>
+      <div className={css["wrapper-services"]}>
+       <span className={css["name-field"]}>Age:</span><p className={css["info-unique"]}>{age}</p>
       </div>
-      <div className={css["wrapper-location"]}>
-      <svg className={css["my-icon"]} width="16" height="16"><use href="/icons.svg#icon-map-black"></use></svg>
-      <p className={css.info}>{location}</p>
+      <div className={css["wrapper-services"]}>
+        <p className={css.info}><span className={css["name-field"]}>Experience:</span> {experience}</p>
+      </div>
+      <div className={css["wrapper-services"]}>
+        <p className={css.info}><span className={css["name-field"]}>Kids Age:</span> {kids_age}</p>
+      </div>
+      <div className={css["wrapper-services"]}>
+        <p className={css.info}><span className={css["name-field"]}>Characters:</span> {characters.join(', ')}</p>
+      </div>
+      <div className={css["wrapper-services"]}>
+        <p className={css.info}><span className={css["name-field"]}>Education:</span> {education}</p>
       </div>
       </div>
       <p className={css["info-description"]}>{about}</p>
-      <div className={css["info-services"]}>
-      <div className={css["wrapper-services"]}>
-        <svg className={css["my-icon-unique"]} width="20" height="20"><use href="/icons.svg#icon-users"></use></svg>
-        <p className={css.info}>age:{birthday}</p>
+      <button className={css.btn} onClick={handleClick}>
+        Read more
+      </button>
       </div>
-      <div className={css["wrapper-services"]}>
-        <svg className={css["my-icon"]} width="20" height="20"><use href="/icons.svg#icon-automatic"></use></svg>
-        <p className={css.info}>experience: {experience}</p>
-      </div>
-      <div className={css["wrapper-services"]}>
-        <svg className={css["my-icon-unique"]} width="20" height="20"><use href="/icons.svg#icon-petrol"></use></svg>
-        <p className={css.info}>kids age:{kids_age}</p>
-      </div>
-      <div className={css["wrapper-services"]}>
-        <svg className={css["my-icon"]} width="20" height="20"><use href="/icons.svg#icon-kitchen"></use></svg>
-        <p className={css.info}>characters:{characters}</p>
-      </div>
-      <div className={css["wrapper-services"]}>
-        <svg className={css["my-icon"]} width="20" height="20"><use href="/icons.svg#icon-beds"></use></svg>
-        <p className={css.info}>education:{education}</p>
-      </div>
-      </div>
-      {/* <button className={css.btn} onClick={handleClick}>
-        Show more
-      </button> */}
-      </div>
-     {/* <CamperModal
+  
+     <CamperModal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         content={modalContent}
-      /> */}
-    </div>
+      />
+      </div>
   );
 };
 
