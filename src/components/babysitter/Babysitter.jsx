@@ -90,9 +90,7 @@ const Babysitter = ( {babysitter: {index, name, price_per_hour, rating, location
               )}
       </button>
       </div>
-    
       </div>
-
       <div className={css["info-services"]}>
       <div className={css["wrapper-services"]}>
        <span className={css["name-field"]}>Age:</span><p className={css["info-unique"]}>{age}</p>
