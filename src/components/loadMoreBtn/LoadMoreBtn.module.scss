@@ -10,16 +10,16 @@
   height: 56px;
   cursor: pointer;
   border-radius: 200px;
-  border: 2px solid #475467;
+  border: none;
   font: inherit;
-  color: #101828;
-  background-color: #F7F7F7;
+  color: #FBFBFB; 
+  background-color: #0957C3;
   padding: 10px 15px;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover {
-  border: 2px solid #0957C3;
-  color: #101828;
+  background-color: rgba(9, 87, 195, 0.2);
+  color: #fff; 
 }

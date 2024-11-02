@@ -1,9 +1,9 @@
 // src/components/camperList/BabysitterList.jsx
 
-import Babysitter from "../babysitter/Babysitter.jsx";
 import css from "./BabysitterList.module.scss";
 import { useState } from "react";
 import LoadMoreBtn from "../loadMoreBtn/LoadMoreBtn.jsx";
+import Babysitter from "../babysitter/babysitter.jsx";
 
 const BabysitterList = ({ babysitters }) => {
   const [visibleItems, setVisibleItems] = useState(3);
@@ -22,11 +22,12 @@ const BabysitterList = ({ babysitters }) => {
   return (
     <>
       <ul className={css["babysitters-list"]}>
-        {babysittersToShow.map((babysitter, index) => (
-          <li key={index}> {/* Using index as key */}
+        {babysittersToShow.map((babysitter, id) => (
+          <li key={id}> {/* Using index as key */}
             <Babysitter babysitter={babysitter} /> {/* Passing individual babysitter object */}
           </li>
-        ))}
+        ))} 
+        
         {hasMoreItems && <LoadMoreBtn onClick={handleLoadMore} />}
       </ul>
     </>

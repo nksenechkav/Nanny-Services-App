@@ -6,22 +6,23 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import CamperModal from '../camperModal/CamperModal.jsx';
 import { useState } from "react";
-import { addBabysitterToFavourites, deleteBabysitterFromFavourites } from "../../redux/babysitters/slice.js";
+import { addBabysitterToFavourites, deleteBabysitterFromFavourites } from "../../redux/babysitters/Slice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavouritesBabysitters } from "../../redux/babysitters/selectors.js";
 
-const Babysitter = ( {babysitter: {index, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age,
+const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age,
   about, reviews, characters, education}} ) => {
 
   const dispatch = useDispatch();
   const favouritesBabysitters = useSelector(selectFavouritesBabysitters) || [];
-  const isFavourite = favouritesBabysitters.some(favBabysitter => favBabysitter.index === index);
+  const isFavourite = favouritesBabysitters.some(favBabysitter => favBabysitter.id === id);
+  console.log(id, isFavourite);
 
   const handleFavouriteClick = () => {
     if (isFavourite) {
-      dispatch(deleteBabysitterFromFavourites(index));
+      dispatch(deleteBabysitterFromFavourites(id));
     } else {
-      dispatch(addBabysitterToFavourites(index));
+      dispatch(addBabysitterToFavourites(id));
     }
   };
 
@@ -30,7 +31,7 @@ const Babysitter = ( {babysitter: {index, name, price_per_hour, rating, location
 
   function handleClick() {
     const content = {
-      index, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age, about, reviews, characters, education
+      id, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age, about, reviews, characters, education
     };
 
     setModalContent(content);
@@ -74,7 +75,6 @@ const Babysitter = ( {babysitter: {index, name, price_per_hour, rating, location
       <div className={css["wrapper-info-header"]}>
       <BsStarFill size={16} color="gold" />
       <p className={css.info}>Rating: {rating}</p>
-      {/* <p className={css["info-reviews"]}>({reviews.length} Reviews)</p> */}
       </div>
       <div className={css["wrapper-info-header"]}>
       <p className={css.info}>Price/1 hour: <span>{price_per_hour}&#36;</span></p>

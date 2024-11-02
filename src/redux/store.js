@@ -1,8 +1,7 @@
 // src/redux/store.js
 
 import { configureStore } from "@reduxjs/toolkit";
-import { babysittersReducer } from "./babysitters/slice";
-import { filtersReducer } from "./filters/slice";
+import { filtersReducer } from "./filters/slice.js";
 import {
   persistStore,
   FLUSH,
@@ -15,6 +14,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import { authReducer } from "./auth/slice";
+import { babysittersReducer } from "./babysitters/Slice.js";
 
 const persistConfig = {
   key: 'root',
@@ -22,16 +22,15 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, babysittersReducer);
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authPersistConfig, authReducer),
-    auth: authReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
     babysitters: persistedReducer,
     filters: filtersReducer,
   },

@@ -17,7 +17,6 @@ const initialBabysitters = {
     isLoading: false,
     error: null,
     favourites: [],
-  
 }
 
 const babysittersSlice = createSlice({
@@ -26,14 +25,14 @@ const babysittersSlice = createSlice({
 
   reducers: {
     addBabysitterToFavourites: (state, action) => {
-      const babysitterIdx = action.payload;
-      if (!state.favourites.includes(babysitterIdx)) {
-        state.favourites.push(babysitterIdx);
+      const babysitterId = action.payload;
+      if (!state.favourites.includes(babysitterId)) {
+        state.favourites.push(babysitterId);
       }
     },
     deleteBabysitterFromFavourites: (state, action) => {
-      const babysitterIdx = action.payload;
-      state.favourites = state.favourites.filter(index => index !== babysitterIdx);
+      const babysitterId = action.payload;
+      state.favourites = state.favourites.filter(id => id !== babysitterId);
     },
   },
 

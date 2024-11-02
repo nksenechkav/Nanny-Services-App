@@ -1,13 +1,37 @@
 .favourites-page-container {
   margin: 0 auto;
   max-width: 1440px;
-  padding: 40px;
+  background-color: #F3F3F3;
+  // padding: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.favourites-page-header {
+  margin: 0 auto;
+  width: 1440px;
+  height: 88px;
+  padding: 20px 40px;
+  background-color: #0957C3;
+  color: #FBFBFB;
+  display: flex;
+  justify-content: space-between;
   flex-direction: row; /* Центрує кнопку по горизонталі */
   align-items: flex-start; /* Центрує кнопку по вертикалі (якщо потрібно) */
 }
+.favourites-page-main {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 40px;
+  display: flex;
+  gap: 20px;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center; 
+}
+
 .favourites-text {
   font-size: 60px;
-  color: #E44848;
+  color:  #0957C3;
 }

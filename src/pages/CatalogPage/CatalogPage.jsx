@@ -20,26 +20,6 @@ export default function CatalogPage() {
   const babysitters = useSelector(selectBabysitters);
   // const filteredCampers = useSelector(selectFilteredCampers); 
 
-  // const BabysitterList = () => {
-  //   const dispatch = useDispatch();
-  //   const babysitters = useSelector(selectBabysitters);
-  //   const error = useSelector(selectError);
-  
-  //   useEffect(() => {
-  //     dispatch(fetchBabysitters());
-  //   }, [dispatch]);
-  
-  //   if (error) return <p>Error: {error}</p>;
-  //   if (!babysitters) return <p>Loading...</p>;
-  
-  //   return (
-  //     <ul>
-  //       {Object.entries(babysitters).map(([key, value]) => (
-  //         <li key={key}>{value.name}</li>
-  //       ))}
-  //     </ul>
-  //   );
-  // };
 
   useEffect(() => {
     dispatch(fetchBabysitters());

@@ -1,4 +1,4 @@
-// src/redux/campers/selectors.js
+// src/redux/babysitters/selectors.js
 
 import { createSelector } from 'reselect';
 
@@ -8,7 +8,7 @@ const selectFavouriteIds = (state) => state.babysitters.favourites;
 export const selectFavouritesBabysitters = createSelector(
   [selectBabysitters, selectFavouriteIds],
   (babysitters, favourites) => {
-    return babysitters.filter(babysitters => favourites.includes(babysitters.index));
+    return babysitters.filter(babysitters => favourites.includes(babysitters.id));
   }
 );
 
