@@ -12,6 +12,8 @@ import Modal from 'react-modal';
 import { AiOutlineClose } from 'react-icons/ai';
 import { RiEyeOffLine, RiEyeLine } from 'react-icons/ri';
 
+Modal.setAppElement('#root');
+
 const FeedbackSchema = Yup.object().shape({
   email: Yup.string().trim()
     .matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/, 'Invalid email address')

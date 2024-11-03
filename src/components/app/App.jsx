@@ -1,7 +1,7 @@
 // src/components/app/App.jsx
 
-import { lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense, useEffect, useState } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Layout } from '../layout/Layout.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import { RestrictedRoute } from '../RestrictedRoute.jsx';
@@ -20,15 +20,27 @@ const NotFoundPage = lazy(() => import("../../pages/notFoundPage/NotFoundPage"))
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
+  useEffect(() => {
+    // Open login modal when the user navigates to the login route
+    if (location.pathname === '/login') {
+      setLoginModalOpen(true);
+    } else {
+      setLoginModalOpen(false); // Close the modal on other routes
+    }
+  }, [location]);
+
   return isRefreshing ? (
     <LoaderComponent/>
   ) : (
     <Layout>
+      <Suspense fallback={<LoaderComponent />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
@@ -41,7 +53,7 @@ const App = () => {
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/catalog" component={<LoginForm />} />
+            <RestrictedRoute redirectTo="/catalog" component={<LoginForm onRequestClose={() => setLoginModalOpen(false)} />} />
           }
         />
         <Route
@@ -52,6 +64,8 @@ const App = () => {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <LoginForm isOpen={isLoginModalOpen} onRequestClose={() => setLoginModalOpen(false)} />
+      </Suspense>
     </Layout>
   );
 };

@@ -1,4 +1,4 @@
-// src/redux/campers/slice.js
+// src/redux/babs/slice.js
 
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchBabysitters } from './operations';

@@ -1,31 +1,38 @@
-// src/components/camper/Camper.jsx
+// src/components/babysitter/Babysitter.jsx
 
 import css from "./Babysitter.module.scss";
+import { useNavigate } from 'react-router-dom';
 import { BsStarFill } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import CamperModal from '../camperModal/CamperModal.jsx';
 import { useState } from "react";
-import { addBabysitterToFavourites, deleteBabysitterFromFavourites } from "../../redux/babysitters/Slice.js";
+import { addBabysitterToFavourites, deleteBabysitterFromFavourites } from "../../redux/babysitters/slice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavouritesBabysitters } from "../../redux/babysitters/selectors.js";
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 
 const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age,
   about, reviews, characters, education}} ) => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const favouritesBabysitters = useSelector(selectFavouritesBabysitters) || [];
   const isFavourite = favouritesBabysitters.some(favBabysitter => favBabysitter.id === id);
-  console.log(id, isFavourite);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const handleFavouriteClick = () => {
-    if (isFavourite) {
-      dispatch(deleteBabysitterFromFavourites(id));
-    } else {
-      dispatch(addBabysitterToFavourites(id));
-    }
-  };
-
+      if (!isLoggedIn) {
+        navigate('/login');
+        return;
+      }
+      if (isFavourite) {
+        dispatch(deleteBabysitterFromFavourites(id));
+      } else {
+        dispatch(addBabysitterToFavourites(id));
+      }
+    };
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({});
 
@@ -84,9 +91,9 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
               onClick={handleFavouriteClick}
             >
               {isFavourite ? (
-                <AiFillHeart size={24} color="#0957C3" /> // заполненное синее сердечко
+                <AiFillHeart size={24} color="#0957C3" />
               ) : (
-                <AiOutlineHeart size={24} color="black" /> // пустое сердечко с черной обводкой
+                <AiOutlineHeart size={24} color="black" />
               )}
       </button>
       </div>

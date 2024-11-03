@@ -41,7 +41,6 @@ export const logIn = createAsyncThunk(
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      console.log(user);
       const token = await user.getIdToken();
       setAuthHeader(token);
       return { user: { name: user.displayName, email: user.email, uid: user.uid }, token };
