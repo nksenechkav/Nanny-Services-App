@@ -14,11 +14,12 @@ import {
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import { authReducer } from "./auth/slice";
-import { babysittersReducer } from "./babysitters/Slice.js";
+import { babysittersReducer } from "./babysitters/slice.js";
 
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['favourites'],
 };
 
 const persistedReducer = persistReducer(persistConfig, babysittersReducer);

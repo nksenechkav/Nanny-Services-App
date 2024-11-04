@@ -8,9 +8,10 @@ import { BiMap } from "react-icons/bi";
 import CamperModal from '../camperModal/CamperModal.jsx';
 import { useState } from "react";
 import { addBabysitterToFavourites, deleteBabysitterFromFavourites } from "../../redux/babysitters/slice.js";
+import { saveFavouritesToFirebase } from "../../redux/babysitters/operations.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavouritesBabysitters } from "../../redux/babysitters/selectors.js";
-import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+import { selectIsLoggedIn, selectUserId } from "../../redux/auth/selectors.js";
 
 const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age,
   about, reviews, characters, education}} ) => {
@@ -20,6 +21,7 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
   const favouritesBabysitters = useSelector(selectFavouritesBabysitters) || [];
   const isFavourite = favouritesBabysitters.some(favBabysitter => favBabysitter.id === id);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const userId = useSelector(selectUserId);
 
   const handleFavouriteClick = () => {
       if (!isLoggedIn) {
@@ -31,6 +33,15 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
       } else {
         dispatch(addBabysitterToFavourites(id));
       }
+      
+      const updatedFavourites = isFavourite 
+      ? favouritesBabysitters.filter(favId => favId !== id)
+      : [...favouritesBabysitters, id];
+  
+    localStorage.setItem('favourites', JSON.stringify(updatedFavourites)); // Сохранение избранных в localStorage
+    
+    // Сохранение в Firebase (если требуется)
+      dispatch(saveFavouritesToFirebase(userId));
     };
   
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -1,4 +1,4 @@
-// src/redux/babs/slice.js
+// src/redux/babysitters/slice.js
 
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchBabysitters } from './operations';
@@ -16,7 +16,7 @@ const initialBabysitters = {
     items: [],
     isLoading: false,
     error: null,
-    favourites: [],
+    favourites: JSON.parse(localStorage.getItem('favourites')) || [],
 }
 
 const babysittersSlice = createSlice({

@@ -13,6 +13,7 @@ export default function FavouritesPage() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const favouritesBabysitters = useSelector(selectFavouritesBabysitters);
+  console.log(favouritesBabysitters);
 
 
   return (

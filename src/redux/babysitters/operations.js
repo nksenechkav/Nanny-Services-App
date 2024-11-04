@@ -1,33 +1,57 @@
-// src/redux/campers/operations.js
+// src/redux/babysitters/operations.js
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ref, get } from "firebase/database";
+import { ref, get, set } from "firebase/database";
 import { db } from "../../firebaseConfig";
 import { v4 as uuidv4 } from 'uuid'; // для генерации UUID
 
 export const fetchBabysitters = createAsyncThunk(
-  'babysitters/fetchAll',
-  async (_, thunkAPI) => {
-    try {
-      const babysittersRef = ref(db, '/');
-      const snapshot = await get(babysittersRef);
 
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-
-        // Преобразуем объект данных в массив и добавляем уникальные id каждому объекту
-        const babysittersArray = Object.keys(data).map(key => ({
-          ...data[key],
-          id: uuidv4() // добавляем уникальный id для каждого объекта
-        }));
-
-        return babysittersArray;
-      } else {
-        throw new Error("No data available");
+    'babysitters/fetchAndAdd',
+    async (babysitterData, thunkAPI) => {
+      try {
+        const babysittersRef = ref(db, '/');
+        const snapshot = await get(babysittersRef);
+  
+        let babysittersArray = [];
+  
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+  
+          // Преобразуем объект данных в массив и добавляем унікальні id кожному об'єкту
+          babysittersArray = Object.keys(data).map(key => ({
+            ...data[key],
+            id: key // використання ключа як id
+          }));
+        } else {
+          console.log("No data available");
+        }
+  
+        // Додаємо нову няню з унікальним id, якщо babysitterData передано
+        if (babysitterData) {
+          const newId = uuidv4(); // генеруємо унікальний id
+          const babysitterWithId = { ...babysitterData, id: newId }; // додаємо id до даних
+          const newBabysitterRef = ref(db, `babysitters/${newId}`);
+          await set(newBabysitterRef, babysitterWithId); // додаємо нового няня в базу даних
+          babysittersArray.push(babysitterWithId); // додаємо нового няня до масиву
+        }
+  
+        return babysittersArray; // повертаємо масив няні
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
       }
+    }
+  );
+
+export const saveFavouritesToFirebase = createAsyncThunk(
+  'babysitters/saveFavourites',
+  async (userId, thunkAPI) => {
+    try {
+      const favouritesRef = ref(db, `favourites/${userId}`);
+      const favourites = thunkAPI.getState().babysitters.favourites;
+      await set(favouritesRef, favourites);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
