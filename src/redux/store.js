@@ -19,7 +19,6 @@ import { babysittersReducer } from "./babysitters/slice.js";
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favourites'],
 };
 
 const persistedReducer = persistReducer(persistConfig, babysittersReducer);

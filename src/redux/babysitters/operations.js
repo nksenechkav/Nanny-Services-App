@@ -55,3 +55,16 @@ export const saveFavouritesToFirebase = createAsyncThunk(
     }
   }
 );
+
+export const fetchFavouritesFromFirebase = createAsyncThunk(
+  'babysitters/fetchFavourites',
+  async (userId, thunkAPI) => {
+    try {
+      const favouritesRef = ref(db, `favourites/${userId}`);
+      const snapshot = await get(favouritesRef);
+      return snapshot.exists() ? snapshot.val() : [];
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

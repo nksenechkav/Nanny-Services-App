@@ -1,7 +1,7 @@
 // src/redux/babysitters/slice.js
 
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchBabysitters } from './operations';
+import { fetchBabysitters, fetchFavouritesFromFirebase, saveFavouritesToFirebase } from './operations';
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -16,7 +16,7 @@ const initialBabysitters = {
     items: [],
     isLoading: false,
     error: null,
-    favourites: JSON.parse(localStorage.getItem('favourites')) || [],
+    favourites: [],
 }
 
 const babysittersSlice = createSlice({
@@ -34,6 +34,10 @@ const babysittersSlice = createSlice({
       const babysitterId = action.payload;
       state.favourites = state.favourites.filter(id => id !== babysitterId);
     },
+
+    clearFavourites: (state) => {
+      state.favourites = [];
+    }
   },
 
   extraReducers: (builder) => {
@@ -45,7 +49,14 @@ const babysittersSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchBabysitters.rejected, handleRejected)
+      .addCase(fetchFavouritesFromFirebase.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.favourites = action.payload;
+      })
+      .addCase(fetchFavouritesFromFirebase.rejected, handleRejected)
+      .addCase(saveFavouritesToFirebase.rejected, handleRejected);
   }
 });
-export const { addBabysitterToFavourites, deleteBabysitterFromFavourites } = babysittersSlice.actions;
+export const { addBabysitterToFavourites, deleteBabysitterFromFavourites, clearFavourites } = babysittersSlice.actions;
 export const babysittersReducer = babysittersSlice.reducer;

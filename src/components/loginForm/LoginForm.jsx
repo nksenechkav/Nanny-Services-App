@@ -64,12 +64,12 @@ export const LoginForm = ({ isOpen, onRequestClose }) => {
       <p className={css['form-text']}>Welcome back! Please enter your credentials to access your account and continue your babysitter search.</p>
         <div className={css['form-wrapper']}>
           {/* <label className={css.label} htmlFor={emailFieldId}>Email</label> */}
-          <Field className={css.field} type="email" name="email" id={emailFieldId} placeholder="Email" />
+          <Field className={css.field} type="email" name="email" id={emailFieldId} placeholder="Email" autoComplete="current-email"/>
           <ErrorMessage name="email" component="p" className={css.error} />
         </div>
         <div className={css['form-wrapper']}>
           {/* <label className={css.label} htmlFor={passwordFieldId}>Password</label> */}
-          <Field className={css.field}  type={showPassword ? 'text' : 'password'} name="password" id={passwordFieldId} placeholder="Password"/> 
+          <Field className={css.field}  type={showPassword ? 'text' : 'password'} name="password" id={passwordFieldId} placeholder="Password" autoComplete="current-password"/> 
           <button
         type="button"
         onClick={togglePasswordVisibility}

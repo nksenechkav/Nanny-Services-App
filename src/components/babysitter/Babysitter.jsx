@@ -6,9 +6,9 @@ import { BsStarFill } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import CamperModal from '../camperModal/CamperModal.jsx';
-import { useState } from "react";
-import { addBabysitterToFavourites, deleteBabysitterFromFavourites } from "../../redux/babysitters/slice.js";
-import { saveFavouritesToFirebase } from "../../redux/babysitters/operations.js";
+import { useEffect, useState } from "react";
+import { addBabysitterToFavourites, deleteBabysitterFromFavourites, clearFavourites } from "../../redux/babysitters/slice.js";
+import { fetchFavouritesFromFirebase, saveFavouritesToFirebase } from "../../redux/babysitters/operations.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavouritesBabysitters } from "../../redux/babysitters/selectors.js";
 import { selectIsLoggedIn, selectUserId } from "../../redux/auth/selectors.js";
@@ -23,6 +23,15 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const userId = useSelector(selectUserId);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(fetchFavouritesFromFirebase(userId));
+    }  else {
+      dispatch(clearFavourites());  // Очищення обраних елементів при LogOut
+    }
+  }, [isLoggedIn, userId, dispatch]);
+
+
   const handleFavouriteClick = () => {
       if (!isLoggedIn) {
         navigate('/login');
@@ -33,15 +42,8 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
       } else {
         dispatch(addBabysitterToFavourites(id));
       }
-      
-      const updatedFavourites = isFavourite 
-      ? favouritesBabysitters.filter(favId => favId !== id)
-      : [...favouritesBabysitters, id];
   
-    localStorage.setItem('favourites', JSON.stringify(updatedFavourites)); // Сохранение избранных в localStorage
-    
-    // Сохранение в Firebase (если требуется)
-      dispatch(saveFavouritesToFirebase(userId));
+        dispatch(saveFavouritesToFirebase(userId));
     };
   
   const [isModalOpen, setIsModalOpen] = useState(false);

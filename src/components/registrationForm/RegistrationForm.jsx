@@ -12,6 +12,8 @@ import css from './RegistrationForm.module.scss';
 import { AiOutlineClose } from 'react-icons/ai';
 import { RiEyeOffLine, RiEyeLine } from 'react-icons/ri';
 
+Modal.setAppElement('#root');
+
 const FeedbackSchema = Yup.object().shape({
   email: Yup.string().trim()
     .matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/, 'Invalid email address')
@@ -64,17 +66,17 @@ export const RegistrationForm = ({ isOpen, onRequestClose }) => {
       <p className={css['form-text']}>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</p>
         <div className={css['form-wrapper']}>
           {/* <label className={css.label} htmlFor={nameFieldId}>Username</label> */}
-          <Field className={css.field} type="text" name="name" id={nameFieldId} placeholder="Name" />
+          <Field className={css.field} type="text" name="name" id={nameFieldId} placeholder="Name" autoComplete="current-username"/>
           <ErrorMessage name="name" component="p" className={css.error} />
         </div>
         <div className={css['form-wrapper']}>
           {/* <label className={css.label} htmlFor={emailFieldId}>Email</label> */}
-          <Field className={css.field} type="email" name="email" id={emailFieldId} placeholder="Email" />
+          <Field className={css.field} type="email" name="email" id={emailFieldId} placeholder="Email" autoComplete="current-email"/>
           <ErrorMessage name="email" component="p" className={css.error} />
         </div>
         <div className={css['form-wrapper']}>
           {/* <label className={css.label} htmlFor={passwordFieldId}>Password</label> */}
-          <Field className={css.field}  type={showPassword ? 'text' : 'password'} name="password" id={passwordFieldId} placeholder="Password"/> 
+          <Field className={css.field}  type={showPassword ? 'text' : 'password'} name="password" id={passwordFieldId} placeholder="Password" autoComplete="current-password"/> 
           <button
         type="button"
         onClick={togglePasswordVisibility}

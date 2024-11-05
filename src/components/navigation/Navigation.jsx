@@ -29,9 +29,9 @@ export const Navigation = () => {
         {isLoggedIn && (
           <NavLink
             className={({ isActive }) => (isActive ? `${css.link} ${css.active}` : css.link)}
-            to="/favorites"
+            to="/favourites"
           >
-            Favorites
+            Favourites
           </NavLink>
         )}
       </div>
