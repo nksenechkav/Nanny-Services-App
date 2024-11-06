@@ -23,7 +23,7 @@ const FeedbackSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const LoginForm = ({ isOpen, onRequestClose }) => {
+export const LoginForm = ({ isOpen, onRequestClose, onLoginSuccess }) => {
   const dispatch = useDispatch();
   const emailFieldId = useId();
   const passwordFieldId = useId();
@@ -44,6 +44,7 @@ export const LoginForm = ({ isOpen, onRequestClose }) => {
       .then(() => toast.success('Login success. Congratulations!'))
       .catch(() => toast.error('Login failed. Please check your credentials!'));
     actions.resetForm();
+    onLoginSuccess();
   };
 
   return (

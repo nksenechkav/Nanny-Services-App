@@ -2,7 +2,6 @@
 
 import { useSelector } from 'react-redux';
 import DocumentTitle from '../../components/DocumentTitle.jsx';
-
 import { selectIsLoading, selectError, selectFavouritesBabysitters } from '../../redux/babysitters/selectors.js';
 import LoaderComponent from '../../components/loader/Loader.jsx';
 import ErrorMessage from '../../components/error/ErrorMessage.jsx';

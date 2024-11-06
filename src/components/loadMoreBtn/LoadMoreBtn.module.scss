@@ -19,7 +19,7 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn:hover {
+.btn:hover, .btn:focus {
   background-color: rgba(9, 87, 195, 0.2);
   color: #fff; 
 }

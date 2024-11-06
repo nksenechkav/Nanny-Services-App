@@ -1,27 +1,29 @@
 // src/components/babysitter/Babysitter.jsx
 
 import css from "./Babysitter.module.scss";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { BsStarFill } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
-import CamperModal from '../camperModal/CamperModal.jsx';
 import { useEffect, useState } from "react";
 import { addBabysitterToFavourites, deleteBabysitterFromFavourites, clearFavourites } from "../../redux/babysitters/slice.js";
 import { fetchFavouritesFromFirebase, saveFavouritesToFirebase } from "../../redux/babysitters/operations.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavouritesBabysitters } from "../../redux/babysitters/selectors.js";
 import { selectIsLoggedIn, selectUserId } from "../../redux/auth/selectors.js";
+import { LoginForm } from "../loginForm/LoginForm.jsx";
+import Reviews from "../reviews/Reviews.jsx";
 
 const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age,
-  about, reviews, characters, education}} ) => {
+  about, reviews, characters, education}}, {email, password} ) => {
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const favouritesBabysitters = useSelector(selectFavouritesBabysitters) || [];
   const isFavourite = favouritesBabysitters.some(favBabysitter => favBabysitter.id === id);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const userId = useSelector(selectUserId);
+
+  const [isReviewsOpen, setIsReviewsOpen] = useState(false);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -34,7 +36,7 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
 
   const handleFavouriteClick = () => {
       if (!isLoggedIn) {
-        navigate('/login');
+        handleLoginClick();
         return;
       }
       if (isFavourite) {
@@ -46,18 +48,37 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
         dispatch(saveFavouritesToFirebase(userId));
     };
   
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({});
+    const [isModalLoginOpen, setIsModalLoginOpen] = useState(false);
+    const [modalLoginContent, setModalLoginContent] = useState({});
+  
+    function handleLoginClick() {
+      const content = {
+        email, password
+      };
+  
+      setModalLoginContent(content);
+      setIsModalLoginOpen(true);
+    }
 
-  function handleClick() {
-    const content = {
-      id, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age, about, reviews, characters, education
+    const handleLoginSuccess = () => {
+      setIsModalLoginOpen(false);
     };
 
-    setModalContent(content);
-    setIsModalOpen(true);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [modalContent, setModalContent] = useState({});
+  
+    // function handleModalClick() {
+    //   const content = {
+        
+    //   };
+  
+    //   setModalContent(content);
+    //   setIsModalOpen(true);
+    // }
 
-  }
+    const handleClick = () => {
+      setIsReviewsOpen(true); // Відкриваємо Reviews
+    };
   
   const calculateAge = (birthDateString) => {
     const birthDate = new Date(birthDateString);
@@ -129,15 +150,18 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
       </div>
       </div>
       <p className={css["info-description"]}>{about}</p>
-      <button className={css.btn} onClick={handleClick}>
-        Read more
-      </button>
+      {!isReviewsOpen && (
+        <button className={css.btn} onClick={handleClick}>
+          Read more
+        </button>
+      )}
+      {isReviewsOpen && <Reviews reviews={reviews} />}
       </div>
-  
-     <CamperModal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        content={modalContent}
+     <LoginForm
+        isOpen={isModalLoginOpen}
+        onRequestClose={() => setIsModalLoginOpen(false)}
+        onLoginSuccess={handleLoginSuccess}
+        content={modalLoginContent}
       />
       </div>
   );

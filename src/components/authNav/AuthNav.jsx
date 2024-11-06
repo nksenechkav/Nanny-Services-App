@@ -1,6 +1,6 @@
 // src/components/authNav/AuthNav.jsx
 
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import css from './AuthNav.module.scss';
 import { LoginForm } from '../loginForm/LoginForm';
 import { useState } from 'react';
@@ -32,17 +32,17 @@ export const AuthNav = ( {name, email, password}) => {
   
   return (
     <div className={css['auth-navigation']}>
-      <NavLink className={css['auth-link']} to="/login">
+      <div className={css['auth-link']}>
         <button className={css['auth-btn']} onClick={handleLoginClick}>Log in</button>
-      </NavLink>
+      </div>
       <LoginForm
         isOpen={isModalLoginOpen}
         onRequestClose={() => setIsModalLoginOpen(false)}
         content={modalLoginContent}
       />
-      <NavLink className={css['auth-link']} to="/register">
+      <div className={css['auth-link']}>
         <button className={css['auth-btn']} onClick={handleRegisterClick}>Registration</button>
-      </NavLink>
+      </div>
       <RegistrationForm
         isOpen={isModalRegisterOpen}
         onRequestClose={() => setIsModalRegisterOpen(false)}
