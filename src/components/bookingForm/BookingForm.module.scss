@@ -1,3 +1,69 @@
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  max-height: 90vh; /* Максимальна висота модального вікна */
+  border-radius: 20px;
+  padding: 40px;
+  background-color: white;
+  outline: none;
+  overflow: hidden; /* Забороняє прокручування модального вікна */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden; /* Забороняє прокручування */
+}
+
+.modal-content-inner {
+  position: relative;
+  width: 472px;
+  padding-right: 16px;
+  max-height: 80vh; /* Забезпечити, що є місце для прокрутки */
+  overflow-y: auto; 
+}
+
+
+.modal-window {
+  max-width: 902px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+/* Стилізація полоски прокрутки */
+.modal-content-inner::-webkit-scrollbar {
+  max-width: 8px; /* Ширина полоски прокрутки */
+  max-height: 264px;
+  background: transparent; /* Фон для області прокрутки */
+}
+
+.modal-content-inner::-webkit-scrollbar-thumb {
+  background-color: #D9D9D9; /* Колір полоски прокрутки */
+  border-radius: 7px; /* Скруглення кути полоски прокрутки */
+}
+
+.modal-content-inner::-webkit-scrollbar-thumb:hover {
+  background-color: #c0c0c0; /* Колір полоски прокрутки при наведенні */
+}
+
+.modal-content-inner::-webkit-scrollbar-button {
+  display: none; /* Приховати кнопки прокрутки (верхню та нижню стрілки) */
+}
+
+.modal-content-inner::-webkit-scrollbar-track {
+  margin-top: 150px; /* Відступи між треком і краями контейнера */
+}
+
+
 .booking-form-container {
   width: 448px;
   height: 532px;

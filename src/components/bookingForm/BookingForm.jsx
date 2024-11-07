@@ -8,8 +8,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './BookingForm.module.scss';
+import Modal from 'react-modal';
 
-const BookingForm = () => {
+Modal.setAppElement('#root');
+
+const BookingForm = ({ isOpen, onRequestClose }) => {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
   const initialValues = {
@@ -39,9 +42,18 @@ const BookingForm = () => {
   };
 
   return (
-    <div className={css['booking-form-container']}>
-      <p className={css['booking-header']}>Book your campervan now</p>
-      <p>Stay connected! We are always ready to help you.</p>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      shouldCloseOnOverlayClick={true}
+      className={css['modal-content']}
+      overlayClassName={css['modal-overlay']}
+    >
+      <div className={css['modal-content-inner']}>
+      <div className={css['modal-window']}> 
+      <div className={css['booking-form-container']}>
+      <p className={css['booking-header']}>Make an appointment with a babysitter</p>
+      <p>Arranging a meeting with a caregiver for your child is the first step to creating a safe and comfortable environment. Fill out the form below so we can match you with the perfect care partner.</p>
 
       <Formik
         initialValues={initialValues}
@@ -120,7 +132,12 @@ const BookingForm = () => {
       </Formik>
 
       <ToastContainer />
+      </div>
     </div>
+  </div>
+      
+    </Modal>
+   
   );
 };
 

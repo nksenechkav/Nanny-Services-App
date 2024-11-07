@@ -13,6 +13,7 @@ import { selectFavouritesBabysitters } from "../../redux/babysitters/selectors.j
 import { selectIsLoggedIn, selectUserId } from "../../redux/auth/selectors.js";
 import { LoginForm } from "../loginForm/LoginForm.jsx";
 import Reviews from "../reviews/Reviews.jsx";
+import BookingForm from "../bookingForm/BookingForm.jsx";
 
 const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, birthday, experience, avatar_url, kids_age,
   about, reviews, characters, education}}, {email, password} ) => {
@@ -64,20 +65,20 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
       setIsModalLoginOpen(false);
     };
 
-    // const [isModalOpen, setIsModalOpen] = useState(false);
-    // const [modalContent, setModalContent] = useState({});
+    const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
+    const [BookingFormContent, setBookingFormContent] = useState({});
   
-    // function handleModalClick() {
-    //   const content = {
+    function handleBookingFormClick() {
+      const content = {
         
-    //   };
+      };
   
-    //   setModalContent(content);
-    //   setIsModalOpen(true);
-    // }
+      setBookingFormContent(content);
+      setIsBookingFormOpen(true);
+    }
 
     const handleClick = () => {
-      setIsReviewsOpen(true); // Відкриваємо Reviews
+      setIsReviewsOpen(true); 
     };
   
   const calculateAge = (birthDateString) => {
@@ -156,12 +157,22 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
         </button>
       )}
       {isReviewsOpen && <Reviews reviews={reviews} />}
+      {isReviewsOpen && (
+        <button className={css["btn-booking"]} onClick={handleBookingFormClick}>
+          Make an appointment
+        </button>
+      )}
       </div>
      <LoginForm
         isOpen={isModalLoginOpen}
         onRequestClose={() => setIsModalLoginOpen(false)}
         onLoginSuccess={handleLoginSuccess}
         content={modalLoginContent}
+      />
+      <BookingForm
+        isOpen={isBookingFormOpen}
+        onRequestClose={() => setIsBookingFormOpen(false)}
+        content={BookingFormContent}
       />
       </div>
   );

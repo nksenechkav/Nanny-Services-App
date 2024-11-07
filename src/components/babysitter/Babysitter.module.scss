@@ -171,3 +171,22 @@ span {
 .btn:hover, .btn:focus{
   color: #38CD3E;
 }
+
+.btn-booking {
+  width: 215px;
+  height: 48x;
+  cursor: pointer;
+  border-radius: 30px;
+  border: none;
+  font: inherit;
+  color: #FBFBFB; 
+  background-color: #0957C3;
+  padding: 14px 28px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-booking:hover, .btn-booking:focus {
+  background-color: rgba(9, 87, 195, 0.2);
+  color: #fff; 
+}
