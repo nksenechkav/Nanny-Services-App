@@ -9,6 +9,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './BookingForm.module.scss';
 import Modal from 'react-modal';
+import { AiOutlineClose } from 'react-icons/ai';
 
 Modal.setAppElement('#root');
 
@@ -49,11 +50,15 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
       className={css['modal-content']}
       overlayClassName={css['modal-overlay']}
     >
-      <div className={css['modal-content-inner']}>
-      <div className={css['modal-window']}> 
+       <div className={css['modal-content-inner']}>
+       <div className={css['modal-window']}>
       <div className={css['booking-form-container']}>
+      <button className={css['close-button']} onClick={onRequestClose}>
+      <AiOutlineClose size={24} />
+      </button>
       <p className={css['booking-header']}>Make an appointment with a babysitter</p>
       <p>Arranging a meeting with a caregiver for your child is the first step to creating a safe and comfortable environment. Fill out the form below so we can match you with the perfect care partner.</p>
+      
 
       <Formik
         initialValues={initialValues}
@@ -62,33 +67,44 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
       >
         {({ setFieldValue, values }) => (
           <Form className={css['booking-form']}>
-            <div className={css['form-group']}>
+            <div className={css['form-group-block-small']}>
+            <div className={css['form-group-small']}>
               <Field
                 type="text"
-                id="name"
-                name="name"
-                placeholder="Name"
+                id="address"
+                name="address"
+                placeholder="Address"
               />
-              <ErrorMessage name="name" component="div" className={css['error']} />
+              <ErrorMessage name="address" component="div" className={css['error']} />
             </div>
 
-            <div className={css['form-group']}>
+            <div className={css['form-group-small']}>
               <Field
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="+380"
               />
-              <ErrorMessage name="email" component="div" className={css['error']} />
+              <ErrorMessage name="age" component="div" className={css['error']} />
             </div>
 
-            <div className={css['form-group']}>
+            <div className={css['form-group-small']}>
+              <Field
+                type="text"
+                id="age"
+                name="age"
+                placeholder="Child's age"
+              />
+              <ErrorMessage name="age" component="div" className={css['error']} />
+            </div>
+
+            <div className={css['form-group-small']}>
               <div className={css['date-picker-wrapper']}>
                 <input
                   type="text"
                   value={values.bookingDate ? values.bookingDate.toLocaleDateString() : ''}
                   readOnly
-                  placeholder="Booking date"
+                  placeholder="Meeting time"
                   onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
                   className={css['date-picker-input']}
                 />
@@ -115,6 +131,28 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
               </div>
               <ErrorMessage name="bookingDate" component="div" className={css['error']} />
             </div>
+            </div>
+
+           <div className={css['form-group-block-big']}>
+           <div className={css['form-group']}>
+              <Field
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+              />
+              <ErrorMessage name="email" component="div" className={css['error']} />
+            </div>
+
+            <div className={css['form-group']}>
+              <Field
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Father's or mother's name"
+              />
+              <ErrorMessage name="name" component="div" className={css['error']} />
+            </div>
 
             <div className={css['form-group']}>
               <Field
@@ -125,6 +163,7 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
               />
               <ErrorMessage name="comment" component="div" className={css['error']} />
             </div>
+           </div>  
 
             <button type="submit" className={css['submit-button']}>Send</button>
           </Form>
@@ -133,9 +172,8 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
 
       <ToastContainer />
       </div>
-    </div>
-  </div>
-      
+      </div>
+      </div>
     </Modal>
    
   );

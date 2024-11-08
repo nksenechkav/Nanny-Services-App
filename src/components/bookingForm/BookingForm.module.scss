@@ -6,7 +6,7 @@
   max-width: 600px;
   max-height: 90vh; /* Максимальна висота модального вікна */
   border-radius: 20px;
-  padding: 40px;
+  padding: 60px 40px;
   background-color: white;
   outline: none;
   overflow: hidden; /* Забороняє прокручування модального вікна */
@@ -24,7 +24,7 @@
 
 .modal-content-inner {
   position: relative;
-  width: 472px;
+  width: 530px;
   padding-right: 16px;
   max-height: 80vh; /* Забезпечити, що є місце для прокрутки */
   overflow-y: auto; 
@@ -32,7 +32,7 @@
 
 
 .modal-window {
-  max-width: 902px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -42,7 +42,7 @@
 /* Стилізація полоски прокрутки */
 .modal-content-inner::-webkit-scrollbar {
   max-width: 8px; /* Ширина полоски прокрутки */
-  max-height: 264px;
+  max-height: 100px;
   background: transparent; /* Фон для області прокрутки */
 }
 
@@ -60,22 +60,20 @@
 }
 
 .modal-content-inner::-webkit-scrollbar-track {
-  margin-top: 150px; /* Відступи між треком і краями контейнера */
+  margin-top: 100px; /* Відступи між треком і краями контейнера */
+  margin-bottom: 100px;
 }
 
-
 .booking-form-container {
-  width: 448px;
-  height: 532px;
+  position: relative;
+  width: 472px;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  border-radius: 10px;
-  border: 2px solid #D9D9D9;
+  // gap: 24px;
 
   .booking-header {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 40px;
+    font-weight: 500;
     color: #101828;
     margin-bottom: 8px;
   }
@@ -95,12 +93,26 @@
   padding-top: 24px;
   padding-bottom: 24px;
 
+  .form-group-block-small {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 52px;
+   }
+
+  .form-group-small {
+    background-color: #F7F7F7;
+    border-radius: 10px;
+    width: 232px;
+    height: 52px;
+   }
+
   .form-group {
     background-color: #F7F7F7;
     border-radius: 10px;
     width: 400px;
-    height: 56px;
-    
+    height: 52px;
+
     input,
     textarea {
       width: calc(100% - 30px); /* Зменшити ширину для уникнення прокрутки */
@@ -162,19 +174,39 @@
   .submit-button {
     margin-top: 58px;
     display: block;
-    width: 160px;
-    height: 56px;
+    width: 472px;
+    height: 52px;
     padding: 10px;
-    background-color: #E44848;
+    background-color: #0957C3;
     color: #fff;
     border: none;
     border-radius: 200px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-    &:hover {
-      background-color: #D84343;
-    }
+    &:hover, :focus {
+      background-color: rgba(9, 87, 195, 0.2);
+      color: #fff; 
+     }
+
   }
+}
+
+.close-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  z-index: 1000; /* Забезпечує, що кнопка буде поверх контенту */
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-button:hover {
+  color: #0957C3;
 }
