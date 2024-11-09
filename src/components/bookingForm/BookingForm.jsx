@@ -10,10 +10,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import css from './BookingForm.module.scss';
 import Modal from 'react-modal';
 import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClockCircle } from "react-icons/ai";
 
 Modal.setAppElement('#root');
 
-const BookingForm = ({ isOpen, onRequestClose }) => {
+const BookingForm = ({ content, isOpen, onRequestClose }) => {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
   const initialValues = {
@@ -57,9 +58,17 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
       <AiOutlineClose size={24} />
       </button>
       <p className={css['booking-header']}>Make an appointment with a babysitter</p>
-      <p>Arranging a meeting with a caregiver for your child is the first step to creating a safe and comfortable environment. Fill out the form below so we can match you with the perfect care partner.</p>
-      
-
+      <p className={css['booking-text']}>Arranging a meeting with a caregiver for your child is the first step to creating a safe and comfortable environment. Fill out the form below so we can match you with the perfect care partner.</p>
+      <div className={css['nanny-info']}>
+      <div className={css["image-wrapper"]}> 
+      <img className={css["image"]} src={content.avatar_url} alt={content.name} />
+      <span className={css["circle"]}></span>
+      </div>
+      <div className={css["info-name-wrapper"]}>
+      <p className={css["info-span"]}>Nanny</p>
+      <p className={css["info-name"]}>{content.name}</p>
+      </div>
+      </div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -68,8 +77,8 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
         {({ setFieldValue, values }) => (
           <Form className={css['booking-form']}>
             <div className={css['form-group-block-small']}>
-            <div className={css['form-group-small']}>
-              <Field
+            <div>
+              <Field className={css['form-group-small']}
                 type="text"
                 id="address"
                 name="address"
@@ -78,8 +87,8 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
               <ErrorMessage name="address" component="div" className={css['error']} />
             </div>
 
-            <div className={css['form-group-small']}>
-              <Field
+            <div>
+              <Field className={css['form-group-small']}
                 type="text"
                 id="phoneNumber"
                 name="phoneNumber"
@@ -88,8 +97,8 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
               <ErrorMessage name="age" component="div" className={css['error']} />
             </div>
 
-            <div className={css['form-group-small']}>
-              <Field
+            <div>
+              <Field className={css['form-group-small']}
                 type="text"
                 id="age"
                 name="age"
@@ -97,9 +106,8 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
               />
               <ErrorMessage name="age" component="div" className={css['error']} />
             </div>
-
-            <div className={css['form-group-small']}>
-              <div className={css['date-picker-wrapper']}>
+            <div className={css['date-picker-wrapper']}>
+            <div className={css['date-picker-main']}>
                 <input
                   type="text"
                   value={values.bookingDate ? values.bookingDate.toLocaleDateString() : ''}
@@ -108,15 +116,11 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
                   onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
                   className={css['date-picker-input']}
                 />
-                <svg
-                  className={css["my-icon"]}
-                  width="24"
-                  height="24"
-                  onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
-                >
-                  <use href="/icons.svg#icon-calendar"></use>
-                </svg>
-                {isDatePickerOpen && (
+               <AiOutlineClockCircle size={24} color="black" className={css['my-icon']} onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}/>
+                  
+                <ErrorMessage name="bookingDate" component="div" className={css['error']} />
+              </div>
+              {isDatePickerOpen && (
                   <DatePicker
                     selected={values.bookingDate}
                     onChange={(date) => {
@@ -125,17 +129,20 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
                     }}
                     onClickOutside={() => setIsDatePickerOpen(false)}
                     inline
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeFormat="HH:mm"
+                    timeIntervals={30} // Интервал в минутах, например, каждые 30 минут
                     className={css['date-picker']}
                   />
                 )}
-              </div>
-              <ErrorMessage name="bookingDate" component="div" className={css['error']} />
             </div>
+             
             </div>
 
            <div className={css['form-group-block-big']}>
-           <div className={css['form-group']}>
-              <Field
+           <div>
+              <Field className={css['form-group-big']}
                 type="email"
                 id="email"
                 name="email"
@@ -144,8 +151,8 @@ const BookingForm = ({ isOpen, onRequestClose }) => {
               <ErrorMessage name="email" component="div" className={css['error']} />
             </div>
 
-            <div className={css['form-group']}>
-              <Field
+            <div>
+              <Field className={css['form-group-big']}
                 type="text"
                 id="name"
                 name="name"

@@ -70,7 +70,7 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
   
     function handleBookingFormClick() {
       const content = {
-        
+       name, avatar_url
       };
   
       setBookingFormContent(content);

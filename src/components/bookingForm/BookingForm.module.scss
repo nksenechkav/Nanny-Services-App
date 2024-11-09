@@ -6,7 +6,7 @@
   max-width: 600px;
   max-height: 90vh; /* Максимальна висота модального вікна */
   border-radius: 20px;
-  padding: 60px 40px;
+  padding: 64px;
   background-color: white;
   outline: none;
   overflow: hidden; /* Забороняє прокручування модального вікна */
@@ -24,10 +24,10 @@
 
 .modal-content-inner {
   position: relative;
-  width: 530px;
-  padding-right: 16px;
+  width: 505px;
   max-height: 80vh; /* Забезпечити, що є місце для прокрутки */
   overflow-y: auto; 
+  overflow-x: hidden;
 }
 
 
@@ -66,70 +66,75 @@
 
 .booking-form-container {
   position: relative;
-  width: 472px;
-  display: flex;
-  flex-direction: column;
-  // gap: 24px;
-
-  .booking-header {
-    font-size: 40px;
-    font-weight: 500;
-    color: #101828;
-    margin-bottom: 8px;
-  }
-
-  p {
-    font-size: 16px;
-    color: #475467;
-  }
-}
-
-.booking-form {
-  width: 100%;
+  width: 516px;
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  gap: 40px;
+}
+
+  .booking-header {
+    width: 472px;
+    font-size: 40px;
+    font-weight: 500;
+    color: #101828;
+  }
+
+  .booking-text {
+    width: 472px;
+    font-size: 16px;
+    color: #475467;
+  }
+
+
+.booking-form {
+  width: 472px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
   .form-group-block-small {
+    max-width: 472px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 52px;
+    gap: 16px 8px;
    }
 
   .form-group-small {
-    background-color: #F7F7F7;
-    border-radius: 10px;
     width: 232px;
     height: 52px;
    }
 
-  .form-group {
-    background-color: #F7F7F7;
-    border-radius: 10px;
-    width: 400px;
+   .form-group-block-big {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+   }
+
+  .form-group-big {
+    width: 472px;
     height: 52px;
+  }
 
     input,
     textarea {
-      width: calc(100% - 30px); /* Зменшити ширину для уникнення прокрутки */
-      border: none;
-      border-radius: 10px;
-      padding: 15px;
-      background-color: #F7F7F7;
+      border: 1px solid rgba(19, 18, 31, 0.1);
+      border-radius: 12px;
+      padding: 16px 18px;
       box-sizing: border-box; /* Враховувати padding у width */
-      
-      placeholder {
-        font-weight: bold;
-      }
     }
+      
+    placeholder {
+        font-size: 16px;
+        font-weight: 400;
+      }
 
     textarea {
-      width: 400px;
-      height: 114px;
+      width: 472px;
+      height: 116px;
       resize: none;
     }
 
@@ -147,32 +152,49 @@
     }
 
     .date-picker-wrapper {
+      width: 232px;
+      height: 52px;
       position: relative;
+    }
+
+    .date-picker-main {
+      width: 232px;
+      height: 52px;
       display: flex;
       align-items: center;
+    }
+
+    .date-picker-input {
+      width: 232px;
+      height: 52px;
+    }
 
       .my-icon {
         display: inline-block;
-        fill: none;
-        stroke: black;
-        stroke-width: 1px;
-        height: 24px;
-        width: 24px;
+        cursor: pointer;
         position: absolute;
         right: 10px;
-        cursor: pointer;
+        top: 50%;
+        transform: translateY(-50%);
       }
 
       .date-picker {
-        width: 100%;
-        padding-right: 40px; /* Додатковий простір для іконки */
-        box-sizing: border-box; /* Враховувати padding у width */
+        position: absolute;
+        top: 50%; /* Расположить ниже input */
+        left: 50%;
+        z-index: 10; /* Убедиться, что DatePicker будет выше других элементов */
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        width: max-content;
+        max-width: 472px; /* Настройте по размеру модального окна */
       }
-    }
-  }
+    
+      
 
   .submit-button {
-    margin-top: 58px;
+    margin-top: 24px;
     display: block;
     width: 472px;
     height: 52px;
@@ -185,14 +207,12 @@
     cursor: pointer;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-    &:hover, :focus {
+  .submit-button:hover, .submit-button:focus {
       background-color: rgba(9, 87, 195, 0.2);
       color: #fff; 
      }
-
-  }
-}
 
 .close-button {
   position: fixed;
@@ -209,4 +229,50 @@
 
 .close-button:hover {
   color: #0957C3;
+}
+
+.nanny-info {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  width: 192px;
+  height: 44px;
+  border: none;
+}
+
+.image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 15px; 
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px; 
+}
+
+
+.info-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8A8A89;
+}
+
+.info-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
 }
