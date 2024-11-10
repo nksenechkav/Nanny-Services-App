@@ -151,20 +151,20 @@
       font-size: 12px;
     }
 
-    .date-picker-wrapper {
+    .time-picker-wrapper {
       width: 232px;
       height: 52px;
       position: relative;
     }
 
-    .date-picker-main {
+    .time-picker-main {
       width: 232px;
       height: 52px;
       display: flex;
       align-items: center;
     }
 
-    .date-picker-input {
+    .time-picker-input {
       width: 232px;
       height: 52px;
     }
@@ -178,20 +178,41 @@
         transform: translateY(-50%);
       }
 
-      .date-picker {
-        position: absolute;
-        top: 50%; /* Расположить ниже input */
-        left: 50%;
-        z-index: 10; /* Убедиться, что DatePicker будет выше других элементов */
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow: hidden;
-        width: max-content;
-        max-width: 472px; /* Настройте по размеру модального окна */
+      .time-text {
+        margin-top: 8px;
+        text-align: center;
       }
-    
+
+      .time-list {
+        position: relative;
+        right: -70px;
+        margin-top: 4px;
+        padding: 0;
+        list-style: none;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        height: 180px;
+        overflow-y: auto;
+        width: 100%;
+        width: 150px;
+        background-color: #fff;
+        -ms-overflow-style: none; /* для IE и старого Edge */
+        scrollbar-width: none; /* для Firefox */
+      }
+
+      .time-list::-webkit-scrollbar {
+        display: none; /* Для Chrome, Safari, Edge */
+      }
       
+      .time-option {
+        padding: 8px;
+        cursor: pointer;
+        text-align: center;
+      }
+      
+      .time-option:hover {
+        background-color: #f0f0f0;
+      }
 
   .submit-button {
     margin-top: 24px;
