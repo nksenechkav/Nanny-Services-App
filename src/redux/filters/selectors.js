@@ -1,18 +1,18 @@
 // src/redux/filters/selectors.js
 
 import { createSelector } from "@reduxjs/toolkit";
-import { selectCampers } from "../campers/selectors";
+import { selectBabysitters } from "../babysitters/selectors";
 
 export const selectLocationFilter = (state) => state.filters.location;
 export const selectEquipmentFilters = (state) => state.filters.equipment;
 export const selectVehicleTypeFilter = (state) => state.filters.vehicleType;
 
-export const selectFilteredCampers = createSelector(
-  [selectCampers, selectLocationFilter, selectEquipmentFilters, selectVehicleTypeFilter],
-  (campers, locationFilter, equipmentFilters, vehicleTypeFilter) => {
+export const selectFilteredBabysitters = createSelector(
+  [selectBabysitters, selectLocationFilter, selectEquipmentFilters, selectVehicleTypeFilter],
+  (babysitters, locationFilter, equipmentFilters, vehicleTypeFilter) => {
     const normalizedFilter = locationFilter.toLowerCase().trim();
 
-    return campers.filter(camper => {
+    return babysitters.filter(camper => {
       // Фільтрація по локації
       const matchesLocation = normalizedFilter ? 
         camper.location.toLowerCase().includes(normalizedFilter) : 

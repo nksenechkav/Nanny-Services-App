@@ -6,7 +6,7 @@ import DocumentTitle from '../../components/DocumentTitle.jsx';
 import { selectIsLoading, selectError } from '../../redux/babysitters/selectors.js';
 import LoaderComponent from '../../components/loader/Loader.jsx';
 import ErrorMessage from '../../components/error/ErrorMessage.jsx';
-// import SearchBox from '../../components/searchBox/SearchBox.jsx';
+import SearchBox from '../../components/searchBox/SearchBox.jsx';
 import css from './CatalogPage.module.scss';
 // import { selectFilteredCampers } from '../../redux/filters/selectors.js';
 import { selectBabysitters } from '../../redux/babysitters/selectors.js';
@@ -30,8 +30,9 @@ export default function CatalogPage() {
       <DocumentTitle>Catalog</DocumentTitle>
       <div className={css["catalog-page-header"]}>
       </div>
+      
       <div className={css["catalog-page-main"]}>
-      {/* <SearchBox/> */}
+      <SearchBox/>
       {isLoading && <LoaderComponent />}
       {error && <ErrorMessage />}
       {babysitters.length > 0 ? (
