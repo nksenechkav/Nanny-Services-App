@@ -141,43 +141,42 @@
 
 import { useState } from 'react';
 import css from './SearchBox.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { sortAtoZ } from '../../redux/filters/slice';
+import { selectBabysitters } from '../../redux/babysitters/selectors';
 
-const SearchBox = ({ onFilterChange }) => {
-  const [selectedFilter, setSelectedFilter] = useState('Show All');
+const SearchBox = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState('Show All');
+  const options = ['A to Z', 'Z to A', 'Less than 10$', 'Greater than 10$', 'Popular', 'Not popular', 'Show All'];
+  const babysitters = useSelector(selectBabysitters); // получаем список нянечек
+  const dispatch = useDispatch();
 
-  const filterOptions = [
-    { value: 'AtoZ', label: 'A to Z' },
-    { value: 'ZtoA', label: 'Z to A' },
-    { value: 'lessThan10', label: 'Less than 10$' },
-    { value: 'greaterThan10', label: 'Greater than 10$' },
-    { value: 'popular', label: 'Popular' },
-    { value: 'notPopular', label: 'Not popular' },
-    { value: 'showAll', label: 'Show All' },
-  ];
-
-  const handleFilterChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedFilter(selectedValue);
-    onFilterChange(selectedValue); // Передаем выбранное значение в родительский компонент
+  const handleSelect = (option) => {
+    setSelected(option);
+    setIsOpen(false);
+    if (option === 'A to Z' || option === 'Z to A') {
+      dispatch(sortAtoZ({ babysitters, order: option })); // передаем список нянечек и тип сортировки
+    }
   };
 
   return (
     <div className={css.searchBox}>
-      <label htmlFor="filter" className={css.label}>
+      <p className={css.label}>
         Filters:
-      </label>
-      <select
-        id="filter"
-        className={css.select}
-        value={selectedFilter}
-        onChange={handleFilterChange}
-      >
-        {filterOptions.map((option) => (
-          <option className={css.option} key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      </p>
+    <div className={css.searchBox}>
+      <button className={css.select} onClick={() => setIsOpen(!isOpen)}>{selected}</button>
+      {isOpen && (
+        <ul className={css['dropdown-menu']}>
+          {options.map((option, index) => (
+            <li className={`${css.option} ${selected === option ? css.selectedOption : ''}`} key={index} onClick={() => handleSelect(option)}>
+              {option}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
     </div>
   );
 };

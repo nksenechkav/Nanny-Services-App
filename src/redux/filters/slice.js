@@ -2,34 +2,28 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const InitialFilters = {
-  location: "",
-  equipment: {},
-  vehicleType: "",
+const initialFilters = {
+  filteredItemsByAtoZ: [],
 };
 
 const filtersSlice = createSlice({
   name: "filters",
-  initialState: InitialFilters,
+  initialState: initialFilters,
   reducers: {
-    changeFilter: (state, action) => {
-      state.location = action.payload;
-    },
-    toggleEquipment: (state, action) => {
-      const { equipmentId, checked } = action.payload;
-      state.equipment[equipmentId] = checked;
-    },
-    changeVehicleType: (state, action) => {
-      state.vehicleType = action.payload;
-    },
-    resetFilters: (state) => {
-      state.location = "";
-      state.equipment = {};
-      state.vehicleType = "";
+    sortAtoZ: (state, action) => {
+      const { babysitters, order } = action.payload;
+      state.filteredItemsByAtoZ = [...babysitters].sort((a, b) => {
+        const nameA = a.name || ''; // Устанавливаем значение по умолчанию, если name отсутствует
+        const nameB = b.name || '';
+        
+        return order === 'A to Z' 
+          ? nameA.localeCompare(nameB)
+          : nameB.localeCompare(nameA);
+      });
     },
   },
 });
 
-export const { changeFilter, toggleEquipment, changeVehicleType, resetFilters } = filtersSlice.actions;
+export const { sortAtoZ } = filtersSlice.actions;
 
 export const filtersReducer = filtersSlice.reducer;

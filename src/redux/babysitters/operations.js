@@ -10,7 +10,7 @@ export const fetchBabysitters = createAsyncThunk(
     'babysitters/fetchAndAdd',
     async (babysitterData, thunkAPI) => {
       try {
-        const babysittersRef = ref(db, '/');
+        const babysittersRef = ref(db, '/babysitters');
         const snapshot = await get(babysittersRef);
   
         let babysittersArray = [];
