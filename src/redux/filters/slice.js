@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialFilters = {
   filteredItemsByAtoZ: [],
+  filteredItemsByPrice: [],
 };
 
 const filtersSlice = createSlice({
@@ -21,9 +22,21 @@ const filtersSlice = createSlice({
           : nameB.localeCompare(nameA);
       });
     },
+    filterByPrice: (state, action) => {
+      const { babysitters, priceRange } = action.payload;
+      state.filteredItemsByPrice = babysitters.filter((babysitter) => {
+        return priceRange === "Less than 10$"
+          ? babysitter.price_per_hour < 10
+          : babysitter.price_per_hour >= 10;
+      });
+    },
+    resetFilter: (state, action) => {
+      // Сброс к полному списку нянь
+      state.filteredItemsByAtoZ = action.payload;
+    },
   },
 });
 
-export const { sortAtoZ } = filtersSlice.actions;
+export const { sortAtoZ, filterByPrice, resetFilter } = filtersSlice.actions;
 
 export const filtersReducer = filtersSlice.reducer;

@@ -3,13 +3,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DocumentTitle from '../../components/DocumentTitle.jsx';
-import { selectIsLoading, selectError } from '../../redux/babysitters/selectors.js';
+import { selectIsLoading, selectError, selectBabysitters } from '../../redux/babysitters/selectors.js';
 import LoaderComponent from '../../components/loader/Loader.jsx';
 import ErrorMessage from '../../components/error/ErrorMessage.jsx';
 import SearchBox from '../../components/searchBox/SearchBox.jsx';
 import css from './CatalogPage.module.scss';
-// import { selectBabysitters } from '../../redux/babysitters/selectors.js';
-import { fetchBabysitters } from '../../redux/babysitters/operations.js';
+import { resetFilter } from '../../redux/filters/slice';
 import BabysitterList from '../../components/babysitterList/BabysitterList.jsx';
 import { selectsortAtoZ } from '../../redux/filters/selectors.js';
 
@@ -17,17 +16,12 @@ export default function CatalogPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  // const babysitters = useSelector(selectBabysitters);
+  const babysitters = useSelector(selectBabysitters);
   const filteredItems = useSelector(selectsortAtoZ); // получаем отфильтрованные элементы
-  const cleanedItems = filteredItems.filter(item => item !== 'favourites');
-
-  console.log(cleanedItems);  // Проверим, что данные не содержат лишний элемент
-
-
 
   useEffect(() => {
-    dispatch(fetchBabysitters());
-  }, [dispatch]);
+    dispatch(resetFilter(babysitters));
+  }, [dispatch, babysitters]);
 
   return (
     <div className={css["catalog-page-container"]}>
