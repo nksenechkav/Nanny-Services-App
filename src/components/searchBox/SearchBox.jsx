@@ -2,27 +2,41 @@
 
 import { useState } from 'react';
 import css from './SearchBox.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { sortAtoZ, resetFilter } from '../../redux/filters/slice';
-import { selectBabysitters } from '../../redux/babysitters/selectors';
+import { useDispatch } from 'react-redux';
+import { setSortOrder, setPriceRange, setPopularity, resetFilters } from '../../redux/filters/slice';
 
 const SearchBox = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState('Show All');
-  const options = ['A to Z', 'Z to A', 'Less than 10$', 'Greater than 10$', 'Popular', 'Not popular', 'Show All'];
-  const babysitters = useSelector(selectBabysitters); // получаем список нянечек
+  const options = ['A to Z', 'Z to A', 'Less than 20$', 'Greater than 20$', 'Popular', 'Not popular', 'Show All'];
   const dispatch = useDispatch();
 
   const handleSelect = (option) => {
     setSelected(option);
     setIsOpen(false);
-    if (option === 'A to Z' || option === 'Z to A') {
-      dispatch(sortAtoZ({ babysitters, order: option }));
-    } else if (option === 'Less than 10$' || option === 'Greater than 10$') {
-      const condition = option === 'Less than 10$' ? 'lessThan10' : 'greaterThan10';
-      dispatch(filterByPrice({ babysitters, condition }));
-    } else if (option === 'Show All') {
-      dispatch(resetFilter(babysitters));
+
+    switch (option) {
+      case 'A to Z':
+      case 'Z to A':
+        dispatch(setSortOrder(option));
+        break;
+      case 'Less than 20$':
+        dispatch(setPriceRange('lessThan20'));
+        break;
+      case 'Greater than 20$':
+        dispatch(setPriceRange('greaterThan20'));
+        break;
+      case 'Popular':
+        dispatch(setPopularity(true));
+        break;
+      case 'Not popular':
+        dispatch(setPopularity(false));
+        break;
+      case 'Show All':
+        dispatch(resetFilters());
+        break;
+      default:
+        break;
     }
   };
   return (

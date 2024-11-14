@@ -2,16 +2,19 @@
 
 import { useSelector } from 'react-redux';
 import DocumentTitle from '../../components/DocumentTitle.jsx';
-import { selectIsLoading, selectError, selectFavouritesBabysitters } from '../../redux/babysitters/selectors.js';
+import { selectIsLoading, selectError } from '../../redux/babysitters/selectors.js';
 import LoaderComponent from '../../components/loader/Loader.jsx';
 import ErrorMessage from '../../components/error/ErrorMessage.jsx';
 import BabysitterList from '../../components/babysitterList/BabysitterList.jsx';
 import css from './FavouritesPage.module.scss';
+import SearchBox from '../../components/searchBox/SearchBox.jsx';
+import { selectFilteredFavouritesBabysitters } from '../../redux/filters/selectors.js';
 
 export default function FavouritesPage() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const favouritesBabysitters = useSelector(selectFavouritesBabysitters);
+  const filteredFavouritesItems = useSelector(selectFilteredFavouritesBabysitters); // получаем отфильтрованные элементы
+
 
   return (
     <div className={css["favourites-page-container"]}>
@@ -19,10 +22,11 @@ export default function FavouritesPage() {
       <div className={css["favourites-page-header"]}>
       </div>
       <div className={css["favourites-page-main"]}>
+      <SearchBox/>
       {isLoading && <LoaderComponent />}
       {error && <ErrorMessage />}
-      {favouritesBabysitters.length > 0 ? (
-        <BabysitterList babysitters={favouritesBabysitters} />
+      {filteredFavouritesItems.length > 0 ? (
+        <BabysitterList babysitters={filteredFavouritesItems} />
       ) : (
         <p className={css["favourites-text"]}>No favourites yet.</p>
       )}

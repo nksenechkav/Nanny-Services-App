@@ -8,19 +8,19 @@ import LoaderComponent from '../../components/loader/Loader.jsx';
 import ErrorMessage from '../../components/error/ErrorMessage.jsx';
 import SearchBox from '../../components/searchBox/SearchBox.jsx';
 import css from './CatalogPage.module.scss';
-import { resetFilter } from '../../redux/filters/slice';
+import { resetFilters } from '../../redux/filters/slice';
 import BabysitterList from '../../components/babysitterList/BabysitterList.jsx';
-import { selectsortAtoZ } from '../../redux/filters/selectors.js';
+import { selectFilteredBabysitters } from '../../redux/filters/selectors.js';
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const babysitters = useSelector(selectBabysitters);
-  const filteredItems = useSelector(selectsortAtoZ); // получаем отфильтрованные элементы
+  const filteredItems = useSelector(selectFilteredBabysitters); // получаем отфильтрованные элементы
 
   useEffect(() => {
-    dispatch(resetFilter(babysitters));
+    dispatch(resetFilters(babysitters));
   }, [dispatch, babysitters]);
 
   return (

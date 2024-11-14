@@ -2,41 +2,31 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialFilters = {
-  filteredItemsByAtoZ: [],
-  filteredItemsByPrice: [],
-};
-
 const filtersSlice = createSlice({
-  name: "filters",
-  initialState: initialFilters,
+  name: 'filters',
+  initialState: {
+    sortOrder: '',         // Порядок сортировки: 'A to Z', 'Z to A'
+    priceRange: null,       // Диапазон цен: 'lessThan10', 'greaterThan10'
+    popular: undefined,     // Популярность: true, false или undefined
+  },
   reducers: {
-    sortAtoZ: (state, action) => {
-      const { babysitters, order } = action.payload;
-      state.filteredItemsByAtoZ = [...babysitters].sort((a, b) => {
-        const nameA = a.name || ''; // Устанавливаем значение по умолчанию, если name отсутствует
-        const nameB = b.name || '';
-        
-        return order === 'A to Z' 
-          ? nameA.localeCompare(nameB)
-          : nameB.localeCompare(nameA);
-      });
+    setSortOrder: (state, action) => {
+      state.sortOrder = action.payload;
     },
-    filterByPrice: (state, action) => {
-      const { babysitters, priceRange } = action.payload;
-      state.filteredItemsByPrice = babysitters.filter((babysitter) => {
-        return priceRange === "Less than 10$"
-          ? babysitter.price_per_hour < 10
-          : babysitter.price_per_hour >= 10;
-      });
+    setPriceRange: (state, action) => {
+      state.priceRange = action.payload;
     },
-    resetFilter: (state, action) => {
-      // Сброс к полному списку нянь
-      state.filteredItemsByAtoZ = action.payload;
+    setPopularity: (state, action) => {
+      state.popular = action.payload;
+    },
+    resetFilters: (state) => {
+      state.sortOrder = '';
+      state.priceRange = null;
+      state.popular = undefined;
     },
   },
 });
 
-export const { sortAtoZ, filterByPrice, resetFilter } = filtersSlice.actions;
+export const { setSortOrder, setPriceRange, setPopularity, resetFilters } = filtersSlice.actions;
 
 export const filtersReducer = filtersSlice.reducer;
