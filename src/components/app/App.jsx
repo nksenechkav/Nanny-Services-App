@@ -1,6 +1,6 @@
 // src/components/app/App.jsx
 
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/Layout.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
@@ -26,7 +26,6 @@ const App = () => {
     <LoaderComponent/>
   ) : (
     <Layout>
-      <Suspense fallback={<LoaderComponent />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
@@ -38,7 +37,6 @@ const App = () => {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      </Suspense>
     </Layout>
   );
 };

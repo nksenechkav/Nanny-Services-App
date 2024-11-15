@@ -5,7 +5,6 @@ import { register, logIn, logOut, refreshUser } from './operations';
 
 const initialState = {
   user: { uid: null, name: null, email: null },
-  token: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -15,25 +14,18 @@ const authSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      // Handle user registration
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload;
         state.isLoggedIn = true;
       })
-      // Handle user login
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload;
         state.isLoggedIn = true;
       })
-      // Handle user logout
       .addCase(logOut.fulfilled, (state) => {
-        state.user = { uid: null, email: null };
-        state.token = null;
+        state.user = { uid: null, name: null, email: null };
         state.isLoggedIn = false;
       })
-      // Refresh user on page reload or token refresh
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })

@@ -10,11 +10,6 @@ import {
 } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 
-// Utility to set token in Redux state (no need to manually manage tokens in Firebase)
-const setAuthHeader = () => {
-  // This can be used to set headers if needed
-};
-
 // Register a new user
 export const register = createAsyncThunk(
   'auth/register',
@@ -22,12 +17,8 @@ export const register = createAsyncThunk(
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-
-      // Обновляем профиль пользователя для добавления имени
       await updateProfile(user, { displayName: name });
-      const token = await user.getIdToken();
-      console.log(user);
-      return { user: { name, email: user.email, uid: user.uid }, token };
+      return { name, email: user.email, uid: user.uid };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -41,9 +32,7 @@ export const logIn = createAsyncThunk(
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      const token = await user.getIdToken();
-      setAuthHeader(token);
-      return { user: { name: user.displayName, email: user.email, uid: user.uid }, token };
+      return { name: user.displayName, email: user.email, uid: user.uid };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -54,19 +43,18 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await signOut(auth);
-    // Firebase automatically handles token removal, so we don't need to clear it manually.
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-// Refresh user (Check the current authentication status)
-export const refreshUser = createAsyncThunk( 'auth/refresh', async (_, thunkAPI) => {
+// Refresh user on page reload
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
     return new Promise((resolve, reject) => {
-      onAuthStateChanged(auth, async (user) => {
+      onAuthStateChanged(auth, (user) => {
         if (user) {
-          const token = await user.getIdToken();
-          setAuthHeader(token);
           resolve({ name: user.displayName, email: user.email, uid: user.uid });
         } else {
           reject('User not authenticated');
