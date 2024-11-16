@@ -23,9 +23,9 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, babysittersReducer);
 const authPersistConfig = {
-  key: 'auth',
+  key: "auth",
   storage,
-  whitelist: ['token'],
+  whitelist: ["user", "isLoggedIn"], // Указываем, что нужно сохранять
 };
 
 export const store = configureStore({

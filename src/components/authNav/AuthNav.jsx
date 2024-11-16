@@ -20,6 +20,11 @@ export const AuthNav = ( {name, email, password}) => {
     setModalLoginContent(content);
     setIsModalLoginOpen(true);
   }
+  
+  const handleLoginSuccess = () => {
+    setIsModalLoginOpen(false);
+  };
+  
 
   function handleRegisterClick() {
     const content = {
@@ -38,6 +43,7 @@ export const AuthNav = ( {name, email, password}) => {
       <LoginForm
         isOpen={isModalLoginOpen}
         onRequestClose={() => setIsModalLoginOpen(false)}
+        onLoginSuccess={handleLoginSuccess}
         content={modalLoginContent}
       />
       <div className={css['auth-link']}>

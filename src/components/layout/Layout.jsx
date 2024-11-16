@@ -3,12 +3,13 @@
 import css from './Layout.module.scss';
 import { Suspense } from 'react';
 import { AppBar } from '../appBar/AppBar.jsx';
+import LoaderComponent from '../loader/Loader.jsx';
 
 export const Layout = ({children}) => {
   return (
     <div className={css["container"]}>
       <AppBar />
-      <Suspense fallback={null}> 
+      <Suspense fallback={<LoaderComponent />}> 
       {children}
       </Suspense>
     </div>
