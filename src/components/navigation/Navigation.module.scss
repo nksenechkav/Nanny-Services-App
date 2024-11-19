@@ -1,23 +1,5 @@
 .navigation {
-  width: 1184px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.link-header {
-  font-size: 24px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #FBFBFB;
-  margin-right: 487px;
-}
-
-.link-header:hover, .link-header:focus {
-  color: rgba(251, 251, 251, 0.4);
-}
-
-.link-menu {
+  // width: 246px;
   display: flex;
   flex-direction: row;
   gap: 20px;

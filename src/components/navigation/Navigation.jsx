@@ -10,10 +10,6 @@ export const Navigation = () => {
 
   return (
     <nav className={css.navigation}>
-      <NavLink className={css["link-header"]} to="/">
-        Nanny.Services
-      </NavLink>
-      <div className={css["link-menu"]}>
         <NavLink
           className={css.link}
           to="/"
@@ -34,7 +30,6 @@ export const Navigation = () => {
             Favourites
           </NavLink>
         )}
-      </div>
     </nav>
   );
 };

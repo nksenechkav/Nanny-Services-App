@@ -37,18 +37,14 @@ export const AuthNav = ( {name, email, password}) => {
   
   return (
     <div className={css['auth-navigation']}>
-      <div className={css['auth-link']}>
         <button className={css['auth-btn']} onClick={handleLoginClick}>Log in</button>
-      </div>
       <LoginForm
         isOpen={isModalLoginOpen}
         onRequestClose={() => setIsModalLoginOpen(false)}
         onLoginSuccess={handleLoginSuccess}
         content={modalLoginContent}
       />
-      <div className={css['auth-link']}>
         <button className={css['auth-btn']} onClick={handleRegisterClick}>Registration</button>
-      </div>
       <RegistrationForm
         isOpen={isModalRegisterOpen}
         onRequestClose={() => setIsModalRegisterOpen(false)}

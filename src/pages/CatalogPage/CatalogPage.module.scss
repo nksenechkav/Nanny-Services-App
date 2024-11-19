@@ -7,16 +7,9 @@
   gap: 20px;
 }
 .catalog-page-header {
-  margin: 0 auto;
   width: 1440px;
   height: 88px;
-  padding: 20px 128px;
   background-color: #0957C3;
-  color: #FBFBFB;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row; /* Центрує кнопку по горизонталі */
-  align-items: flex-start; /* Центрує кнопку по вертикалі (якщо потрібно) */
 }
 .catalog-page-main {
   margin: 0 auto;
