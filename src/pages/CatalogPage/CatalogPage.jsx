@@ -18,6 +18,7 @@ export default function CatalogPage() {
   const error = useSelector(selectError);
   const babysitters = useSelector(selectBabysitters);
   const filteredItems = useSelector(selectFilteredBabysitters); // получаем отфильтрованные элементы
+  console.log(babysitters);
 
   useEffect(() => {
     dispatch(resetFilters(babysitters));

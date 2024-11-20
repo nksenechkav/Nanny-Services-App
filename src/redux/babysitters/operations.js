@@ -2,7 +2,7 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ref, get, set } from "firebase/database";
-import { db } from "../../firebaseConfig";
+import { db } from "../../../firebaseConfig";
 import { v4 as uuidv4 } from 'uuid'; // для генерации UUID
 
 export const fetchBabysitters = createAsyncThunk(
@@ -17,6 +17,7 @@ export const fetchBabysitters = createAsyncThunk(
   
         if (snapshot.exists()) {
           const data = snapshot.val();
+          console.log("Data fetched:", snapshot.val());
   
           // Преобразуем объект данных в массив и добавляем унікальні id кожному об'єкту
           babysittersArray = Object.keys(data).map(key => ({
