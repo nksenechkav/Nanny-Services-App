@@ -11,23 +11,21 @@ export default function HomePage() {
       <DocumentTitle>Nanny Services</DocumentTitle>
 
       <div className={css.container}>
-          <div className={css["title-container"]}>
+        <div className={css["title-container"]}>
           <h1 className={css.title}>
-                Make Life Easier for the Family:
+            Make Life Easier for the Family:
           </h1>
           <p className={css.subtitle}>
-          Find Babysitters Online for All Occasions
-            </p>
-          <button className={css.btn}>
-            <p className={css.text}>Get started </p>
-            <Link to="/catalog" className={css.titleLink}>
-            <MdOutlineArrowOutward size={18} color="white"/>
-            </Link>
-          </button>
-          </div>
-          <div className={css["image-container"]}>
-          <img src="../../../home-image.png" alt="home-image" className={css.image} />
-          </div>
+            Find Babysitters Online for All Occasions
+          </p>
+          <Link to="/catalog" className={css.btn}>
+            <p className={css.text}>Get started</p>
+            <MdOutlineArrowOutward className={css.icon} size={18} />
+          </Link>
+        </div>
+        <div className={css["image-container"]}>
+          <img src="../../../home-image.png" alt="home" className={css.image} />
+        </div>
       </div>
     </>
   );

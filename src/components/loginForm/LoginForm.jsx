@@ -72,12 +72,12 @@ export const LoginForm = ({ isOpen, onRequestClose, onLoginSuccess }) => {
           {/* <label className={css.label} htmlFor={passwordFieldId}>Password</label> */}
           <Field className={css.field}  type={showPassword ? 'text' : 'password'} name="password" id={passwordFieldId} placeholder="Password" autoComplete="current-password"/> 
           <button
-        type="button"
-        onClick={togglePasswordVisibility}
-        style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-      >
-        {showPassword ? <RiEyeLine className={css['my-icon']} size={20} /> : <RiEyeOffLine className={css['my-icon']} size={20} />}
-      </button>
+          type="button"
+          onClick={togglePasswordVisibility}
+          className={css['my-icon']}
+        >
+          {showPassword ? <RiEyeLine size={20} /> : <RiEyeOffLine size={20} />}
+           </button>
           <ErrorMessage name="password" component="p" className={css.error} />
         </div>
         <button className={css.btn} type="submit">Log In</button>

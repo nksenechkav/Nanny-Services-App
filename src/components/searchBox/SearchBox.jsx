@@ -14,6 +14,7 @@ const SearchBox = () => {
   const handleSelect = (option) => {
     setSelected(option);
     setIsOpen(false);
+    dispatch(resetFilters());
 
     switch (option) {
       case 'A to Z':
@@ -33,7 +34,6 @@ const SearchBox = () => {
         dispatch(setPopularity(false));
         break;
       case 'Show All':
-        dispatch(resetFilters());
         break;
       default:
         break;

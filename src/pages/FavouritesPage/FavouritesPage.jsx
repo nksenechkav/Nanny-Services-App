@@ -13,8 +13,7 @@ import { selectFilteredFavouritesBabysitters } from '../../redux/filters/selecto
 export default function FavouritesPage() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const filteredFavouritesItems = useSelector(selectFilteredFavouritesBabysitters); // получаем отфильтрованные элементы
-
+  const filteredFavouritesItems = useSelector(selectFilteredFavouritesBabysitters);
 
   return (
     <div className={css["favourites-page-container"]}>

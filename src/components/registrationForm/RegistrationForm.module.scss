@@ -45,32 +45,39 @@
   }
 
   .form-wrapper {
+    position: relative; /* Устанавливаем относительное позиционирование для контейнера */
+    height: 72px; /* Фиксируем высоту, чтобы избежать смещений */
     margin-bottom: 18px;
   }
   
   .field {
-    width: 438px;
-    height: 52px;
-    padding: 16px 18px;
+    width: 100%; /* Занимает всю ширину */
+    height: 52px; /* Высота поля ввода */
+    padding: 16px 48px 16px 18px; /* Добавляем место справа для кнопки */
     border: 1px solid #ccc;
     border-radius: 12px;
     outline: none;
   }
+  
   
   ::placeholder {
     color: #11101C;
   }
 
   .my-icon {
-    display: inline-block;
-    position: absolute;
-    bottom: 165px;
-    right: 50px;
+    position: absolute; /* Абсолютное позиционирование относительно .form-wrapper */
+    top: 40%; /* Центрирование кнопки по вертикали */
+    right: 18px; /* Отступ от правого края */
+    transform: translateY(-50%); /* Точное выравнивание по центру */
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
   }
   
   .error {
+    position: absolute; /* Абсолютное позиционирование ошибки */
     color: #dc3545;
-    margin-top: 5px;
+    font-size: 14px;
   }
   
   .btn {

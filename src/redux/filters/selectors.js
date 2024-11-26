@@ -1,7 +1,7 @@
 // src/redux/filters/selectors.js
 
 import { createSelector } from 'reselect';
-import { selectBabysitters, selectFavouritesBabysitters } from '../babysitters/selectors'; // Используем существующий селектор
+import { selectBabysitters, selectFavouritesBabysitters } from '../babysitters/selectors';
 
 const selectFilters = (state) => state.filters;
 
@@ -10,7 +10,7 @@ export const selectFilteredBabysitters = createSelector(
   (babysitters, filters) => {
     let filteredBabysitters = [...babysitters];
 
-    // Фильтрация по популярности (рейтинг 4.5 и выше)
+    // Фильтрация по популярности (рейтинг 4.8 и выше)
     if (filters.popular !== undefined) {
       filteredBabysitters = filteredBabysitters.filter((b) =>
         filters.popular ? b.rating >= 4.8 : b.rating < 4.8

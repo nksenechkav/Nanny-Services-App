@@ -68,13 +68,14 @@ const Babysitter = ( {babysitter: {id, name, price_per_hour, rating, location, b
     const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
     const [BookingFormContent, setBookingFormContent] = useState({});
   
-    function handleBookingFormClick() {
+    function handleBookingFormClick(event) {
       const content = {
        name, avatar_url
       };
   
       setBookingFormContent(content);
       setIsBookingFormOpen(true);
+      event.target.blur(); // Знімаємо фокус із кнопки
     }
 
     const handleClick = () => {
