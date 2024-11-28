@@ -139,6 +139,23 @@ const BookingForm = ({ content, isOpen, onRequestClose }) => {
                 id="phoneNumber"
                 name="phoneNumber"
                 placeholder="+380"
+                value={values.phoneNumber} // Підключено до Formik
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+
+                  // Дозволяємо редагувати лише цифри після "+380"
+                  if (inputValue.startsWith("+380")) {
+                    setFieldValue("phoneNumber", inputValue); // Оновлюємо значення через Formik
+                  } else if (inputValue === "") {
+                    setFieldValue("phoneNumber", "+380"); // Якщо користувач видаляє все, повертаємо "+380"
+                  }
+                }}
+                onBlur={() => {
+                  // Забезпечуємо, що "+380" залишиться навіть після втрати фокуса
+                  if (!values.phoneNumber.startsWith("+380")) {
+                    setFieldValue("phoneNumber", "+380");
+                  }
+                }}
               />
               <ErrorMessage name="age" component="div" className={css['error']} />
             </div>

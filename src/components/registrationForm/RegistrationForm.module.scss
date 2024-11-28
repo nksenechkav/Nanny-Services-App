@@ -75,9 +75,17 @@
   }
   
   .error {
-    position: absolute; /* Абсолютное позиционирование ошибки */
-    color: #dc3545;
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 5px;
+  
+    &::before {
+      content: '⚠️'; /* Иконка ошибки */
+      margin-right: 5px; /* Отступ справа от иконки */
+    }
   }
   
   .btn {

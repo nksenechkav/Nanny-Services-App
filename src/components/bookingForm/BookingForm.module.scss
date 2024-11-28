@@ -146,10 +146,19 @@
     }
 
     .error {
-      margin-top: 5px;
-      color: red;
+      display: flex;
+      align-items: center;
+      color: #ff0000;
       font-size: 12px;
+      margin-top: 5px;
+      margin-left: 5px;
+    
+      &::before {
+        content: '⚠️'; /* Иконка ошибки */
+        margin-right: 5px; /* Отступ справа от иконки */
+      }
     }
+    
 
     .time-picker-wrapper {
       width: 232px;
