@@ -2,25 +2,31 @@
 
 ![Nanny-service](https://github.com/nksenechkav/nanny-services-app/blob/main/public/favicon.png?raw=true)
 
-Welcome to the Camper Van Booking Application! This web app is designed to streamline the process of renting camper vans for your travel adventures. Our platform makes it easy for users to find and book the perfect camper for their needs. With user-friendly search and filter options, you can quickly locate available camper vans based on location, type, and amenities.
+Welcome to the Nanny Services Application! This web app is designed to help families connect with professional nannies. With features like sorting, filtering, and personalized favorite lists, finding the right nanny has never been easier.
 
-## 🚀 [Live Demo](https://campers-rental-app.vercel.app/)
+## 🚀 [Live Demo](https://nanny-services-app.web.app/)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 🌟 Key Features
 
-- **Location-Based Search**  
-  Easily search for camper vans available in your desired location by entering the location details. Our app will display a list of available options in the selected area.
+- **Sorting and Filtering Options**
+  Organize and refine the nanny list by:
+  - `Alphabetical Order:` A-Z or Z-A.
+  - `Price:` Filter nannies based on their service fees.
+  - `Popularity:` Sort by rating from lowest to highest.
 
-- **Equipment Filtering**  
-  Choose the amenities that are important to you. Filter camper vans based on the equipment you need, such as air conditioning, kitchen facilities, television, and more.
+- **Nanny Profiles**  
+  Each nanny has a detailed profile accessible through the Read More button. This allows users to learn about the nanny's skills, experience, and availability.
 
-- **Camper Type Filtering**  
-  Select from various types of camper vans to find the one that best suits your travel style. Options include vans, fully integrated campers, and alcove models.
+- **Appointment Form**  
+  Users can schedule a meeting with a nanny via the Make an Appointment button, which opens a modal window containing a form to submit their request.
 
-- **Favorite Listings**  
-  Save your favorite camper van listings for easy access in the future. This feature allows you to quickly return to and compare your preferred options.
+- **User Authentication**  
+  Secure user login and registration functionality powered by Firebase Authentication.
+
+- **Favorites List**  
+  Registered users can save their preferred nannies to a private Favorites page for easy access later.
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -69,41 +75,16 @@ Core language for dynamic functionality.
 - `react-perfect-scrollbar` for smooth, custom scrolling.
 - `react-icons` for icon integration.
 
-### 🚀 Vercel
-Hosting platform for deploying the application.
+### 🔥 Firebase
+- `Authentication:` Secure user login and registration.
+- `Realtime Database:` Store and manage nanny data.
+- `Hosting:` Seamless app deployment.
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 🌐 Pages
 
-<table align="center">
-  <tr>
-    <td align="center" style="margin:10px;">
-      <a href="https://campers-rental-app.vercel.app/" target="_blank" style="text-decoration:none;">
-        <img src="https://github.com/nksenechkav/campers-rental-app/blob/main/public/home.png?raw=true" alt="Home Page" width="200px" height="150px" style="border-radius:10px;"/>
-        <div style="font-size:20px; margin-top:10px; color:#333;">
-          🏠 <strong>Home</strong>
-        </div>
-      </a>
-    </td>
-    <td align="center" style="margin:10px;">
-      <a href="https://campers-rental-app.vercel.app/catalog" target="_blank" style="text-decoration:none;">
-        <img src="https://github.com/nksenechkav/campers-rental-app/blob/main/public/catalog.png?raw=true" alt="Catalog Page" width="200px" height="150px" style="border-radius:10px;"/>
-        <div style="font-size:20px; margin-top:10px; color:#333;">
-          🗂️ <strong>Catalog</strong>
-        </div>
-      </a>
-    </td>
-    <td align="center" style="margin:10px;">
-      <a href="https://campers-rental-app.vercel.app/favorites" target="_blank" style="text-decoration:none;">
-        <img src="https://github.com/nksenechkav/campers-rental-app/blob/main/public/favourites.png?raw=true" alt="Favorites Page" width="200px" height="150px" style="border-radius:10px;"/>
-        <div style="font-size:20px; margin-top:10px; color:#333;">
-          ❤️ <strong>Favorites</strong>
-        </div>
-      </a>
-    </td>
-  </tr>
-</table>
+<table align="center"> <tr> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/home.png?raw=true" alt="Home Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 🏠 <strong>Home</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/nannies" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/nannies.png?raw=true" alt="Nannies Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 👩‍👧‍👦 <strong>Nannies</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/favourites" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/favorites.png?raw=true" alt="Favorites Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> ❤️ <strong>Favorites</strong> </div> </a> </td> </tr> </table>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
