@@ -38,8 +38,7 @@ Use our filtering options to narrow down your search based on sorting by alphabe
 ### 2. ❤️ Save
 Add your favorite listings to your profile for quick reference later.
 `Note:` This feature is available only after completing the registration and login process. If an unregistered user clicks the heart icon, a pop-up notification will appear, informing them that this option requires registration and prompting them to log in or sign up.
-![Nanny-register](https://github.com/nksenechkav/nanny-services-app/blob/main/public/register.png?raw=true)
-![Nanny-login](https://github.com/nksenechkav/nanny-services-app/blob/main/public/login.png?raw=true)
+<table> <tr> <td align="center" style="width:50%;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/register.png?raw=true" alt="Registration Pop-up" width="300px" style="border-radius:10px;"> <p style="font-size:14px; margin-top:5px;">Registration Notification</p> </td> <td align="center" style="width:50%;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/login.png?raw=true" alt="Login Pop-up" width="300px" style="border-radius:10px;"> <p style="font-size:14px; margin-top:5px;">Login Notification</p> </td> </tr> </table>
 
 ### 3. 📋 Details
 Before making an appointment, you can explore detailed information about each nanny. This allows you to make an informed decision based on your personal preferences.
@@ -47,7 +46,7 @@ Before making an appointment, you can explore detailed information about each na
 
 ### 4. 📅 Make an appointment
 Once you’ve found the perfect nanny for your children, proceed with making an appointment through our straightforward process. Submit a meeting request via a user-friendly modal form.
-![Nanny-booking](https://github.com/nksenechkav/nanny-services-app/blob/main/public/booking.png?raw=true)
+![Nanny-booking]<p align="center"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/booking.png?raw=true" alt="Booking Modal" width="500px" style="border-radius:10px;"> </p>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -78,7 +77,7 @@ Core language for dynamic functionality.
 
 ## 🌐 Pages
 
-<table align="center"> <tr> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/home.png?raw=true" alt="Home Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 🏠 <strong>Home</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/catalog" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/catalog.png?raw=true" alt="Nannies Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 👩‍👧‍👦 <strong>Nannies</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/favourites" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/favorites.png?raw=true" alt="Favorites Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> ❤️ <strong>Favorites</strong> </div> </a> </td> </tr> </table>
+<table align="center"> <tr> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/home.png?raw=true" alt="Home Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 🏠 <strong>Home</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/catalog" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/catalog.png?raw=true" alt="Nannies Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 👩‍👧‍👦 <strong>Nannies</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/favourites" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/favourites.png?raw=true" alt="Favorites Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> ❤️ <strong>Favorites</strong> </div> </a> </td> </tr> </table>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
