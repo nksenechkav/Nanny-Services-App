@@ -32,31 +32,22 @@ Welcome to the Nanny Services Application! This web app is designed to help fami
 
 ## 🔍 How It Works
 
-### 1. 🔎 Search
-Enter your desired location to find available camper vans in that area.
+### 1. 🎛️ Filter
+Use our filtering options to narrow down your search based on sorting by alphabet and filtering by price and popularity to find the best match.
 
-### 2. 🎛️ Filter
-Use our filtering options to narrow down your search based on equipment and camper type.
-
-### 3. 💾 Save
+### 2. ❤️ Save
 Add your favorite listings to your profile for quick reference later.
+`Note:` This feature is available only after completing the registration and login process. If an unregistered user clicks the heart icon, a pop-up notification will appear, informing them that this option requires registration and prompting them to log in or sign up.
+![Nanny-register](https://github.com/nksenechkav/nanny-services-app/blob/main/public/register.png?raw=true)
+![Nanny-login](https://github.com/nksenechkav/nanny-services-app/blob/main/public/login.png?raw=true)
 
-### 4. 🛠️ Details
-Before making a booking, you can explore detailed information about each camper van, including specifications, available amenities, and more. This allows you to make an informed decision based on your travel preferences.
-![Camper-details](https://github.com/nksenechkav/campers-rental-app/blob/main/public/details.png?raw=true)
+### 3. 📋 Details
+Before making an appointment, you can explore detailed information about each nanny. This allows you to make an informed decision based on your personal preferences.
+![Nanny-details](https://github.com/nksenechkav/nanny-services-app/blob/main/public/details.png?raw=true)
 
-### 5. ⚙️ Features
-Each camper van comes with its own set of features and equipment, such as kitchen facilities, air conditioning, or extra sleeping space. You can explore these features to ensure that the camper meets your needs for comfort and convenience during your trip.
-
-![Camper-features](https://github.com/nksenechkav/campers-rental-app/blob/main/public/features.png?raw=true)
-
-### 6. ⭐ Reviews
-Read reviews left by other users to learn more about their experience with specific camper vans. You can also leave your own feedback after your trip to help others in the community make better choices.
-![Camper-reviews](https://github.com/nksenechkav/campers-rental-app/blob/main/public/reviews.png?raw=true)
-
-### 7. 🛒 Book
-Once you’ve found the perfect camper van, proceed with booking through our straightforward process.
-![Camper-booking](https://github.com/nksenechkav/campers-rental-app/blob/main/public/booking.png?raw=true)
+### 4. 📅 Make an appointment
+Once you’ve found the perfect nanny for your children, proceed with making an appointment through our straightforward process. Submit a meeting request via a user-friendly modal form.
+![Nanny-booking](https://github.com/nksenechkav/nanny-services-app/blob/main/public/booking.png?raw=true)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -72,8 +63,11 @@ State management for JavaScript apps.
 Core language for dynamic functionality.
 
 ### 📚 Libraries
-- `react-perfect-scrollbar` for smooth, custom scrolling.
-- `react-icons` for icon integration.
+- `react-perfect-scrollbar:` Enables smooth and customizable scrolling experiences for better usability and design.
+- `react-icons:` Provides a wide range of intuitive icons for enhancing the user interface.
+- `react-time-picker:` A lightweight time picker component for selecting time in forms or scheduling features.
+- `formik:` Simplifies form handling and validation, ensuring robust and user-friendly forms.
+- `react-modal:` A versatile library for creating accessible and customizable modal dialogs.
 
 ### 🔥 Firebase
 - `Authentication:` Secure user login and registration.
@@ -84,7 +78,7 @@ Core language for dynamic functionality.
 
 ## 🌐 Pages
 
-<table align="center"> <tr> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/home.png?raw=true" alt="Home Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 🏠 <strong>Home</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/nannies" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/nannies.png?raw=true" alt="Nannies Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 👩‍👧‍👦 <strong>Nannies</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/favourites" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/favorites.png?raw=true" alt="Favorites Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> ❤️ <strong>Favorites</strong> </div> </a> </td> </tr> </table>
+<table align="center"> <tr> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/home.png?raw=true" alt="Home Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 🏠 <strong>Home</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/catalog" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/catalog.png?raw=true" alt="Nannies Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> 👩‍👧‍👦 <strong>Nannies</strong> </div> </a> </td> <td align="center" style="margin:10px;"> <a href="https://nanny-services-app.firebaseapp.com/favourites" target="_blank" style="text-decoration:none;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/favorites.png?raw=true" alt="Favorites Page" width="200px" height="150px" style="border-radius:10px;"/> <div style="font-size:20px; margin-top:10px; color:#333;"> ❤️ <strong>Favorites</strong> </div> </a> </td> </tr> </table>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
