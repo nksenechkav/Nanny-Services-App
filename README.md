@@ -46,7 +46,7 @@ Before making an appointment, you can explore detailed information about each na
 
 ### 4. 📅 Make an appointment
 Once you’ve found the perfect nanny for your children, proceed with making an appointment through our straightforward process. Submit a meeting request via a user-friendly modal form.
-![Nanny-booking]<p align="center"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/booking.png?raw=true" alt="Booking Modal" width="500px" style="border-radius:10px;"> </p>
+<p align="center"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/booking.png?raw=true" alt="Booking Modal" width="500px" style="border-radius:10px;"> </p>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
