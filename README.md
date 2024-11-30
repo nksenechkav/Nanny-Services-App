@@ -38,13 +38,28 @@ Use our filtering options to narrow down your search based on sorting by alphabe
 ### 2. ❤️ Save
 Add your favorite listings to your profile for quick reference later.
 `Note:` This feature is available only after completing the registration and login process. If an unregistered user clicks the heart icon, a pop-up notification will appear, informing them that this option requires registration and prompting them to log in or sign up.
-<table> <tr> <td align="center" style="width:50%;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/register.png?raw=true" alt="Registration Pop-up" width="300px" style="border-radius:10px;"> <p style="font-size:14px; margin-top:5px;">Registration Notification</p> </td> <td align="center" style="width:50%;"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/login.png?raw=true" alt="Login Pop-up" width="300px" style="border-radius:10px;"> <p style="font-size:14px; margin-top:5px;">Login Notification</p> </td> </tr> </table>
 
-### 3. 📋 Details
+### 3. 🔑 Authentication
+The authentication process is straightforward and involves filling out a form, submitting the data to the server, and creating a personal user account. This feature grants access to the private Favourites page, where users can add or remove selected nanny profiles to or from their list of favorites.
+<table align="center">
+  <tr>
+    <td align="center" style="width:45%;">
+      <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/register.png?raw=true" alt="Registration Pop-up" width="300px">
+      <p style="font-size:14px; margin-top:5px;">Registration Notification</p>
+    </td>
+    <td style="width:10%;"></td> <!-- Пустая колонка для отступа -->
+    <td align="center" style="width:45%;">
+      <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/login.png?raw=true" alt="Login Pop-up" width="300px">
+      <p style="font-size:14px; margin-top:5px;">Login Notification</p>
+    </td>
+  </tr>
+</table>
+
+### 4. 📋 Details
 Before making an appointment, you can explore detailed information about each nanny. This allows you to make an informed decision based on your personal preferences.
 ![Nanny-details](https://github.com/nksenechkav/nanny-services-app/blob/main/public/details.png?raw=true)
 
-### 4. 📅 Make an appointment
+### 5. 📅 Make an appointment
 Once you’ve found the perfect nanny for your children, proceed with making an appointment through our straightforward process. Submit a meeting request via a user-friendly modal form.
 <p align="center"> <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/booking.png?raw=true" alt="Booking Modal" width="500px" style="border-radius:10px;"> </p>
 
