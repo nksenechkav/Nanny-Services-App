@@ -7,17 +7,16 @@ import { getDatabase } from "firebase/database";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAl2ySOJKPpuk0zjCnWvKAOJo1j1cNh9q0",
-  authDomain: "nanny-services-app.firebaseapp.com",
-  databaseURL: "https://nanny-services-app-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "nanny-services-app",
-  storageBucket: "nanny-services-app.appspot.com",
-  messagingSenderId: "931936030474",
-  appId: "1:931936030474:web:bd3908b7326c2c9da034f3",
-  measurementId: "G-9WGB28DXNW"
-};
 
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || functions.config().nanny_services_firebase.apikey,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || functions.config().nanny_services_firebase.authdomain,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL || functions.config().nanny_services_firebase.databaseurl,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || functions.config().nanny_services_firebase.projectid,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || functions.config().nanny_services_firebase.storagebucket,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || functions.config().nanny_services_firebase.messagingsenderid,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || functions.config().nanny_services_firebase.appid,
+};
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);

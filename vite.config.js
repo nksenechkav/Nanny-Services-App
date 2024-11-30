@@ -9,4 +9,7 @@ export default defineConfig({
   sourcemap: true,
  },
  base: "/",
+ define: {
+    'process.env': process.env,  // если вам нужно передавать переменные окружения в приложение
+  },
 });
