@@ -47,7 +47,7 @@ The authentication process is straightforward and involves filling out a form, s
       <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/register.png?raw=true" alt="Registration Pop-up" width="300px">
       <p style="font-size:14px; margin-top:5px;">Registration Notification</p>
     </td>
-    <td style="width:20%;"></td> <!-- Добавьте отступ как пробел -->
+    <td style="width:50%; border: none;"></td> <!-- Добавьте отступ как пробел -->
     <td align="center" style="width:45%;">
       <img src="https://github.com/nksenechkav/nanny-services-app/blob/main/public/login.png?raw=true" alt="Login Pop-up" width="300px">
       <p style="font-size:14px; margin-top:5px;">Login Notification</p>
