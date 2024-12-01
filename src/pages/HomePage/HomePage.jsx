@@ -1,11 +1,15 @@
 // src/pages/HomePage/HomePage.jsx
 
 import { Link } from 'react-router-dom';
-import { MdOutlineArrowOutward } from "react-icons/md";
+import { MdOutlineArrowOutward, MdCheck } from "react-icons/md";
 import DocumentTitle from '../../components/DocumentTitle.jsx';
+import { useSelector } from 'react-redux'; 
+import { selectBabysitters } from '../../redux/babysitters/selectors';
 import css from './HomePage.module.scss';
 
 export default function HomePage() {
+  const babysitters = useSelector(selectBabysitters); 
+  const babysitterCount = babysitters.length; 
   return (
     <>
       <DocumentTitle>Nanny Services</DocumentTitle>
@@ -25,6 +29,17 @@ export default function HomePage() {
         </div>
         <div className={css["image-container"]}>
           <img src="../../../home-image.png" alt="home" className={css.image} />
+          <div className={css["info-box"]}>
+            <div className={css["info-amount"]}>
+                <div className={css["info-icon"]}>
+                  <MdCheck size={24} />
+                </div>
+                <div className={css["info"]}>
+                <p className={css["info-text"]}>Experienced nannies</p>
+                <p className={css["info-number"]}>{babysitterCount}</p>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -80,3 +80,55 @@
   width: 100%;
   height: 100%;
 }
+
+.info-box {
+  position: relative; /* Чтобы блок располагался поверх всей страницы */
+  bottom: 170px;    /* Отступ от нижнего края */
+  left:350px;     /* Отступ от правого края */
+  width: 284px;
+  height: 118px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Для гарантии, что блок поверх всех элементов */
+}
+
+.info-amount {
+  width: 220px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.info-icon {
+  width: 54px;
+  height: 54px;
+  background-color: #0957C3;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+}
+.info {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-text {
+  font-size: 16px;
+  font-weight: 500;
+  color:#475467;
+}
+
+.info-number {
+  font-size: 24px;
+  font-weight: 500;
+  color:#000;
+}
