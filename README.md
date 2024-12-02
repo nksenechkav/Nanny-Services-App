@@ -102,7 +102,7 @@ To run the project locally, follow these steps:
 
 ### 1. 📥 Clone the repo:
 
-git clone https://github.com/nksenechkav/campers-rental-app.git
+git clone https://github.com/nksenechkav/nanny-services-app.git
 
 ### 2. 📦 Install dependencies:
 
